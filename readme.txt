@@ -10,16 +10,14 @@ zhousoft/TsingHuaDataStructOj
 
 ALG4:
 
-kevin-wayne/algs4
-
-《算法（第4版）》笔记
+https://github.com/kevin-wayne/algs4
 
 https://github.com/shellfly/algs4-py
 
 
 王争
 
-wangzheng0822/algo
+https://github.com/wangzheng0822/algo/tree/master/python
 
 
 
@@ -27,27 +25,25 @@ wangzheng0822/algo
 
 labuladong
 
-labuladong/fucking-algorithm
+https://github.com/labuladong/fucking-algorithm
 
 
 
-soulmachine leetcode
+soulmachine 
 
-介绍 · 算法珠玑
-
-soulmachine/leetcode
+https://github.com/soulmachine/leetcode
 
 
 
 剑指offer
 
-gatieme/CodingInterviews
+https://github.com/gatieme/CodingInterviews
 
-JushuangQiao/Python-Offer
+https://github.com/JushuangQiao/Python-Offer
 
-剑指Offer--题集目录索引_OSKernelLAB-CSDN博客
+https://blog.csdn.net/gatieme/article/details/51916802
 
-《剑指Offer》解题目录（更新完毕）_Michael是个半路程序员-CSDN博客
+https://blog.csdn.net/qq_21201267/article/details/104271963
 
 半情调：剑指offer-Python版（上）
 
@@ -69,7 +65,7 @@ https://github.com/panxl6/cc150
 
 https://github.com/yiliyili/algorithms_zuochengyun
 
-ResolveWang/algorithm_qa
+https://github.com/ResolveWang/algorithm_qa
 
 https://github.com/RobbChen/Algorithm-learning
 
