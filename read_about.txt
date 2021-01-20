@@ -57,6 +57,8 @@ https://github.com/F8F-1BearCat/CtCI-6th-Edition-CN
 
 https://github.com/careercup/CtCI-6th-Edition
 
+https://github.com/careercup/CtCI-6th-Edition-Python
+
 https://github.com/panxl6/cc150
 
 
