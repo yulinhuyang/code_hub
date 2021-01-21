@@ -77,8 +77,10 @@ python版刷题汇总：
 
 https://blog.csdn.net/qq_32424059/article/details/88855423
 
-https://github.com/Garvit244/Leetcode
+https://github.com/wuduhren/leetcode-python
 
 https://github.com/qiyuangong/leetcode
 
 https://github.com/algorhythms/
+
+https://github.com/JiayangWu/LeetCode-Python
