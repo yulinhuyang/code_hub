@@ -12,3 +12,6 @@ int countPrimes(int n) {
     
     return count;
 }
+
+
+#204.计数质数
