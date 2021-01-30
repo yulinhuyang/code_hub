@@ -1,5 +1,5 @@
 
-#子集合
+#78.子集
 
 vector<vector<int>> subsets(vector<int>& nums) {
     // base case，返回一个空集
@@ -20,7 +20,7 @@ vector<vector<int>> subsets(vector<int>& nums) {
 }
 
 
-#组合
+#77.组合
 vector<vector<int>>res;
 
 vector<vector<int>> combine(int n, int k) {
@@ -47,7 +47,7 @@ void backtrack(int n, int k, int start, vector<int>& track) {
 }
 
 
-#排列
+#46.全排列
 
 List<List<Integer>> res = new LinkedList<>();
 
