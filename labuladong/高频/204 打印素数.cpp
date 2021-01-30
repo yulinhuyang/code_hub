@@ -22,3 +22,7 @@ public:
     return res;    
     }
 };
+
+
+
+204.计数质数
