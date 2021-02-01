@@ -20,6 +20,13 @@ https://github.com/shellfly/algs4-py
 https://github.com/wangzheng0822/algo/tree/master/python
 
 
+Problem Solving with Algorithms and Data Structures Using Python SECOND EDITION
+
+开源版： https://github.com/facert/python-data-structure-cn
+
+
+数据结构与算法：Python语言描述 裘宗燕
+
 
 2  leetcode 
 
