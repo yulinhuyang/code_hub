@@ -11,6 +11,12 @@ https://github.com/jihoonerd/Data_Structures_and_Algorithms_in_Python
 
 随书代码：  https://github.com/mjwestcott/Goodrich
 
+
+data structure and algorithmic thinking with python: data structure and algorithmic puzzles
+
+https://github.com/careermonk/data-structures-and-algorithmic-thinking-with-python
+
+
 leetcode python版
 
 https://github.com/keon/algorithms
@@ -31,7 +37,6 @@ https://github.com/pyslackers/learning-resources/blob/master/topics/algorithms.m
 
 https://github.com/prakhar1989/Algorithms
 
-Python 算法与数据结构视频教程
 
 可视化：
 
