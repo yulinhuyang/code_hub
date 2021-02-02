@@ -44,3 +44,6 @@ https://github.com/prakhar1989/Algorithms
 https://github.com/algorithm-visualizer/algorithm-visualizer
 
 https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+
+
+编程规范： https://python-guide.gitbooks.io/python-style-guide/content/
