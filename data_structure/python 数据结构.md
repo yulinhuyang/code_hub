@@ -12,6 +12,8 @@ https://github.com/jihoonerd/Data_Structures_and_Algorithms_in_Python
 随书代码：  https://github.com/mjwestcott/Goodrich
 
 
+https://github.com/pyslackers/learning-resources/blob/master/topics/algorithms.md
+
 汇总：
 
 [python数据结构基础工具书籍下载-持续更新](https://www.jianshu.com/p/9f4d6a731d59)
