@@ -1,4 +1,4 @@
-*1  绪论*
+**1  绪论**
 
 sum
 
@@ -20,7 +20,7 @@ power
 
 reverse
 
-2  向量
+**2  向量**
 
 vector：查找、排序
 
@@ -28,11 +28,11 @@ Bitmap
 
 prime 素数
 
-3  列表
+**3  列表**
 
 list
 
-4  栈与队列
+**4  栈与队列**
 
 stack_vector  stack_list 
 
@@ -52,7 +52,7 @@ queen 八皇后
 
 RPN表达式求值
 
-5  二叉树
+**5  二叉树**
 
 binTree
 
@@ -60,19 +60,19 @@ huffman
 
 Prefix_free_Codes 前缀树
 
-6  图
+**6  图**
 
 graph
 
 graphmatrix
 
-7 搜索树
+**7 搜索树**
 
 BST
 
 Entry  词条模板
 
-8  高级搜索树
+**8  高级搜索树**
 
 BTree
 
@@ -80,7 +80,7 @@ Splay
 
 redBlack
 
-9  词典
+**9  词典**
 
 Dictionary
 
@@ -89,16 +89,16 @@ skiplist
 Hashtable
 
 
-10 优先级队列
+**10 优先级队列**
 
 PQ、PQ_ComplHeap、PQ_List
 
 
-11  串   
+**11  串 ** 
 
 string_pm相关
 
-12  排序
+**12  排序**
 
 selection
 
@@ -106,4 +106,7 @@ majority众数
 
 median中位数
 
-common library: UniPrint
+
+**common library**: 
+
+UniPrint
