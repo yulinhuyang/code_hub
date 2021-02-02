@@ -4,6 +4,7 @@ Problem Solving with Algorithms and Data Structures Using Python SECOND EDITION
 
 原书网站； https://runestone.academy/runestone/books/published/pythonds/index.html
 
+公开课： https://www.bilibili.com/video/av925959391/
 
 Data Structures and Algorithms in Python
 
