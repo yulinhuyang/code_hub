@@ -7,7 +7,8 @@ Problem Solving with Algorithms and Data Structures Using Python SECOND EDITION
 
 Data Structures and Algorithms in Python
 
-数据结构与算法：Python语言描述 裘宗燕
+随书代码：  https://github.com/mjwestcott/Goodrich
+
 
 汇总：
 
