@@ -25,9 +25,11 @@ Problem Solving with Algorithms and Data Structures Using Python SECOND EDITION
 开源版： https://github.com/facert/python-data-structure-cn
 
 
-数据结构与算法：Python语言描述 裘宗燕
-
-
+算法设计手册
+ 
+ https://www.algorist.com/
+ 
+ 
 2  leetcode 
 
 labuladong
