@@ -3,7 +3,7 @@
 
 C++  :  参考邓俊辉
 
-python版本：Problem Solving with Algorithms and Data Structures   Using Python, Second Edition
+python版本：数据结构与算法 python语言实现
 
 java版本：ALG4
 
