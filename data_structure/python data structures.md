@@ -11,14 +11,21 @@ https://github.com/jihoonerd/Data_Structures_and_Algorithms_in_Python
 
 随书代码：  https://github.com/mjwestcott/Goodrich
 
+leetcode python版
+
+https://github.com/keon/algorithms
+
+All Algorithms implemented in Python： 
+
+https://github.com/TheAlgorithms/Python
+
+
+汇总1 ：
 
 https://github.com/pyslackers/learning-resources/blob/master/topics/algorithms.md
 
-leetcode :   https://github.com/keon/algorithms
 
-All Algorithms implemented in Python： https://github.com/TheAlgorithms/Python
-
-汇总：
+汇总2 ：
 
 [python数据结构基础工具书籍下载-持续更新](https://www.jianshu.com/p/9f4d6a731d59)
 
