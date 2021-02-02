@@ -2,5 +2,9 @@
 
 
 C++  :  参考邓俊辉
-python版本：参考裘宗燕
 
+python版本：Problem Solving with Algorithms and Data Structures   Using Python, Second Edition
+
+java版本：ALG4
+
+已经wangzheng
