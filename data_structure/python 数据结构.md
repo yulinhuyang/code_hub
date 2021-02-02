@@ -14,7 +14,7 @@ https://github.com/jihoonerd/Data_Structures_and_Algorithms_in_Python
 
 汇总：
 
-python数据结构基础工具书籍下载-持续更新
+[python数据结构基础工具书籍下载-持续更新](https://www.jianshu.com/p/9f4d6a731d59)
 
 https://github.com/prakhar1989/Algorithms
 
