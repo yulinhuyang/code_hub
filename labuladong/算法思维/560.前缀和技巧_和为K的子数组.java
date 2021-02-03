@@ -50,8 +50,7 @@ int subarraySum(int[] nums, int k) {
         if (preSum.containsKey(sum0_j))
             ans += preSum.get(sum0_j);
         // 把前缀和 nums[0..i] 加入并记录出现次数
-        preSum.put(sum0_i, 
-            preSum.getOrDefault(sum0_i, 0) + 1);
+        preSum.put(sum0_i, preSum.getOrDefault(sum0_i, 0) + 1);
     }
     return ans;
 }
