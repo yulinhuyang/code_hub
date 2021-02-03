@@ -1,3 +1,4 @@
+
 def superEggDrop(K: int, N: int):
 
     memo = dict()
@@ -25,7 +26,8 @@ def superEggDrop(K: int, N: int):
     return dp(K, N)
     
     
-    优化：
+   
+   优化：
    
    
    def superEggDrop(self, K: int, N: int) -> int:
