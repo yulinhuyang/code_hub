@@ -6,7 +6,11 @@ Problem Solving with Algorithms and Data Structures Using Python SECOND EDITION
 
 公开课： https://www.bilibili.com/video/av925959391/
 
-随书代码： https://github.com/ivanmmarkovic/Problem-Solving-with-Algorithms-and-Data-Structures-using-Python
+随书代码： 
+
+https://github.com/ErikRHanson/Problem-Solving-with-Algorithms-and-Data-Structures-Using-Python
+
+https://github.com/ivanmmarkovic/Problem-Solving-with-Algorithms-and-Data-Structures-using-Python
 
 Data Structures and Algorithms in Python
 
