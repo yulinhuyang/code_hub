@@ -7,8 +7,6 @@ java版本： CTCL、左程云指南
 
 目录
 
-目录
-
 |序号|题目|级别|类别|
 |:-----|:-----|:-----|:-----|
 |1|Two Sum（两数之和）|Easy|
@@ -237,7 +235,6 @@ java版本： CTCL、左程云指南
 |240|Search a 2D Matrix II（搜索二维矩阵 II ）|Medium|
 |241|Different Ways to Add Parentheses|Medium|
 |242|Valid Anagram（有效的字母异位词）|Easy|
-
 |251|展开二维向量|Easy|
 |252|会议室|Medium|
 |253|会议室 II|Medium|
@@ -438,3 +435,5 @@ java版本： CTCL、左程云指南
 |1030|Matrix Cells in Distance Order|Easy|
 |1170|Compare Strings by Frequency of the Smallest Character|Easy|
 |1207|Unique Number of Occurrences|Easy|
+
+
