@@ -1,8 +1,6 @@
-1  数据结构与算法：
+## 1  数据结构与算法：
 
-邓俊辉：
-
-DSACPP
+**DSACPP DJH**
 
 zhousoft/TsingHuaDataStructOj
 
@@ -10,6 +8,8 @@ zhousoft/TsingHuaDataStructOj
 
 
 ALG4:
+
+https://algs4.cs.princeton.edu/code/
 
 https://github.com/kevin-wayne/algs4
 
@@ -28,22 +28,17 @@ Problem Solving with Algorithms and Data Structures Using Python SECOND EDITION
 
 算法设计手册
  
- https://www.algorist.com/
- 
- 
-2  leetcode 
+https://www.algorist.com/
+
+##  2  leetcode 
 
 labuladong
 
 https://github.com/labuladong/fucking-algorithm
 
-
-
 soulmachine 
 
 https://github.com/soulmachine/leetcode
-
-
 
 剑指offer
 
