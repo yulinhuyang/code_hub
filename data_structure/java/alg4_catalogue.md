@@ -180,29 +180,28 @@
 
 代码: 
 
-python:
-
-   Selection:   selection.py 
-
-   Insertion:   insertion.py 
-
-   Shell:   shell.py 
-
-   Merge:   merge.py 
-
-   Quick:   quick.py 
-
-   Quick3Way:   quick_3way.py 
-
-   MaxPQ:   max_pq.py 
-
-   TopM:   top_m.py 
-
-   IndexMinPQ:   index_min_pq.py 
-
-   Multiway:   multiway.py 
-
-   Heap:   heap.py 
+|序号|题目|级别|
+|:-----|:-----|:-----|
+|2.1|Insertion.java|insertion sort|
+||InsertionX.java|insertion sort (optimized)|
+||BinaryInsertion.java|binary insertion sort|
+|2.2|Selection.java|selection sort|
+|2.3|Shell.java|shellsort|
+|2.4|Merge.java|top-down mergesort|
+||MergeBU.java|bottom-up mergesort|
+||MergeX.java|optimized mergesort|
+||Inversions.java|number of inversions|
+|2.5|Quick.java|quicksort|
+||Quick3way.java|quicksort with 3-way partitioning|
+||QuickX.java|optimized 2-way quicksort|
+||QuickBentleyMcIlroy.java|optimized 3-way quicksort|
+||TopM.java|priority queue client|
+|2.6|MaxPQ.java|max heap priority queue|
+||MinPQ.java|min heap priority queue|
+||IndexMinPQ.java|index min heap priority queue|
+||IndexMaxPQ.java|index max heap priority queue|
+||Multiway.java|multiway merge|
+|2.7|Heap.java|heapsort|
 
 ## 第3章　查找 　 
 
@@ -270,19 +269,25 @@ python:
 
 python:
 
-   FrequencyCounter: frequency_counter.py 
-   
-   SequentialSearchST: sequential_search_st.py  
-   
-   BinarySearchST: binary_search_st.py  
-   
-   BST: bst.py  
-   
-   RedBlackBST : red_black_bst.py  
-   
-   SeparateChainingHashST: separate_chaining_hash_st.py  
-   
-   LinearProbingHashST: linear_probing_hash_st.py 
+|序号|题目|级别|
+|:-----|:-----|:-----|
+||FrequencyCounter.java|frequency counter|
+|3.1|SequentialSearchST.java|sequential search|
+|3.2|BinarySearchST.java|binary search|
+|3.3|BST.java|binary search tree|
+|3.4|RedBlackBST.java|red-black tree|
+|3.5|SeparateChainingHashST.java|separate chaining hash table|
+|3.6|LinearProbingHashST.java|linear probing hash table|
+||ST.java|ordered symbol table|
+||SET.java|ordered set|
+||DeDup.java|remove duplicates|
+||AllowFilter.java|allowlist filter|
+||BlockFilter.java|blocklist filter|
+||LookupCSV.java|dictionary lookup|
+||LookupIndex.java|index and inverted index|
+||FileIndex.java|file indexing|
+||SparseVector.java|sparse vector|
+
 
 ## 第4章　 图 　　 
 
@@ -354,57 +359,59 @@ python:
 
 python:
 
-  **Graph
-
-     Graph: graph.py 
-
-     DepthFirstSearch: depth_first_search.py 
-
-     DepthFirstPaths: depth_first_paths.py 
-
-     BreadthFirstPaths: breadth_first_paths.py 
-
-     CC: cc.py 
-
-     Cycle: cycle.py 
-
-     SymbolGraph: symbol_graph.py 
-
-     DegreesOfSeparation: degrees_of_separation.py 
-
-  **Digraph
-
-     Digraph: digraph.py 
-
-     DirectedDFS: directed_dfs.py 
-
-     DirectedCycle: directed_cycle.py 
-
-     DepthFirstOrder: depth_first_order.py 
-
-     Topological: topological.py 
-
-     KosarajuSCC: kosaraju_scc.py 
-
-  **MST
-
-     EdgeWeightedGraph: edge_weighted_graph.py 
-
-     LazyPrimMST: lazy_prim_mst.py 
-
-     PrimMST: prim_mst.py 
-
-     KruskalMST: kruskal_mst.py 
-
-  **Shortest Paths
-
-     EdgeWeightedDigraph: edge_weighted_digraph.py 
-
-     DijkstraSP: dijkstra_sp.py 
-
-     AcyclicSP: acyclic_sp.py 
-
-     BellmanFordSP: bellman_ford_sp.py  
+|序号|题目|级别|
+|:-----|:-----|:-----|
+||Graph.java|undirected graph|
+||GraphGenerator.java|generate random graphs|
+||DepthFirstSearch.java|depth-first search in a graph|
+||NonrecursiveDFS.java|DFS in a graph (nonrecursive)|
+|4.1|DepthFirstPaths.java|paths in a graph (DFS)|
+|4.2|BreadthFirstPaths.java|paths in a graph (BFS)|
+|4.3|CC.java|connected components of a graph|
+||Bipartite.java|bipartite or odd cycle (DFS)|
+||BipartiteX.java|bipartite or odd cycle (BFS)|
+||Cycle.java|cycle in a graph|
+||EulerianCycle.java|Eulerian cycle in a graph|
+||EulerianPath.java|Eulerian path in a graph|
+||SymbolGraph.java|symbol graph|
+||DegreesOfSeparation.java|degrees of separation|
+||Digraph.java|directed graph|
+||DigraphGenerator.java|generate random digraphs|
+|4.4|DirectedDFS.java|depth-first search in a digraph|
+||NonrecursiveDirectedDFS.java|DFS in a digraph (nonrecursive)|
+||DepthFirstDirectedPaths.java|paths in a digraph (DFS)|
+||BreadthFirstDirectedPaths.java|paths in a digraph (BFS)|
+||DirectedCycle.java|cycle in a digraph|
+||DirectedCycleX.java|cycle in a digraph (nonrecursive)|
+||DirectedEulerianCycle.java|Eulerian cycle in a digraph|
+||DirectedEulerianPath.java|Eulerian path in a digraph|
+||DepthFirstOrder.java|depth-first order in a digraph|
+|4.5|Topological.java|topological order in a DAG|
+||TopologicalX.java|topological order (nonrecursive)|
+||TransitiveClosure.java|transitive closure|
+||SymbolDigraph.java|symbol digraph|
+|4.6|KosarajuSharirSCC.java|strong components (KosarajuSharir)|
+||TarjanSCC.java|strong components (Tarjan)|
+||GabowSCC.java|strong components (Gabow)|
+||EdgeWeightedGraph.java|edge-weighted graph|
+||Edge.java|weighted edge|
+||LazyPrimMST.java|MST (lazy Prim)|
+|4.7|PrimMST.java|MST (Prim)|
+|4.8|KruskalMST.java|MST (Kruskal)|
+||BoruvkaMST.java|MST (Boruvka)|
+||EdgeWeightedDigraph.java|edge-weighted digraph|
+||DirectedEdge.java|"weighted| directed edge"|
+|4.9|DijkstraSP.java|shortest paths (Dijkstra)|
+||DijkstraUndirectedSP.java|undirected shortest paths (Dijkstra)|
+||DijkstraAllPairsSP.java|all-pairs shortest paths|
+|4.1|AcyclicSP.java|shortest paths in a DAG|
+||AcyclicLP.java|longest paths in a DAG|
+||CPM.java|critical path method|
+|4.11|BellmanFordSP.java|shortest paths (BellmanFord)|
+||EdgeWeightedDirectedCycle.java|cycle in an edge-weighted digraph|
+||Arbitrage.java|arbitrage detection|
+||FloydWarshall.java|all-pairs shortest paths (dense)|
+||AdjMatrixEdgeWeightedDigraph.java|edge-weighted graph (dense)|
 
 
 ## 第5章　 字符串  
@@ -477,24 +484,75 @@ python:
 
 代码： 
 
-python:
-
-   LSD: algs4/lsd.py 
-   
-   MSD: algs4/msd.py 
-   
-   Quick3string: algs4/quick3_string.py 
-   
-   TrieST: algs4/trie_st.py 
-   
-   TST: algs4/tst.py
-   
-   KMP: algs4/kmp.py 
-   
-   NFA: algs4/nfa.py 
-   
-   Huffman: algs4/huffman.py 
-   
-   LZW: algs4/lzw.py 
+|序号|题目|级别|
+|:-----|:-----|:-----|
+||Alphabet.java|alphabet|
+||Count.java|alphabet client|
+|5.1|LSD.java|LSD radix sort|
+|5.2|MSD.java|MSD radix sort|
+||InplaceMSD.java|In-place MSD radix sort1|
+|5.3|Quick3string.java|3-way string quicksort|
+||AmericanFlag.java|American flag sort1|
+||AmericanFlagX.java|non-recursive American flag sort1|
+|5.4|TrieST.java|multiway trie symbol table|
+||TrieSET.java|multiway trie set|
+|5.5|TST.java|ternary search trie|
+|5.6|KMP.java|substring search (KnuthMorrisPratt)|
+|5.7|BoyerMoore.java|substring search (BoyerMoore)|
+|5.8|RabinKarp.java|substring search (RabinKarp)|
+|5.9|NFA.java|NFA for regular expressions|
+||GREP.java|grep|
+||BinaryDump.java|binary dump|
+||HexDump.java|hex dump|
+||PictureDump.java|picture dump|
+||Genome.java|genomic code|
+||RunLength.java|data compression (run-length coding)|
+|5.1|Huffman.java|data compression (Huffman)|
+|5.11|LZW.java|data compression (LempelZivWelch)|
 
 ## 第6章　 背景 　
+
+|序号|题目|级别|
+|:-----|:-----|:-----|
+|6.1|CollisionSystem.java|collision system|
+||Particle.java|particle|
+|6.2|BTree.java|B-tree|
+|6.3|SuffixArray.java|suffix array (suffix sorting)|
+||SuffixArrayX.java|suffix array (optimized)|
+||LongestRepeatedSubstring.java|longest repeated substring|
+||KWIK.java|keyword in context|
+||LongestCommonSubstring.java|longest common substring|
+|6.4|FordFulkerson.java|maxflowmincut|
+||FlowNetwork.java|capacitated network|
+||FlowEdge.java|capacitated edge with flow|
+||GlobalMincut.java|global mincut (StoerWagner)5|
+||BipartiteMatching.java|bipartite matching (alternating path)|
+||HopcroftKarp.java|bipartite matching (HopcroftKarp)|
+||AssignmentProblem.java|weighted bipartite matching|
+||LinearProgramming.java|linear programming (simplex)|
+||TwoPersonZeroSumGame.java|two-person zero-sum game|
+
+
+9	BEYOND
+
+|序号|题目|级别|
+|:-----|:-----|:-----|
+||GaussianElimination.java|Gaussian elimination|
+||GaussJordanElimination.java|GaussJordan elimination|
+||FFT.java|Fast Fourier transform|
+||Complex.java|complex number|
+||Polynomial.java|polynomial (integer)|
+||GrahamScan.java|2d convex hull (Graham scan)|
+||FarthestPair.java|2d farthest pair (rotating calipers)|
+||ClosestPair.java|2d closest pair|
+||FenwickTree.java|Fenwich tree2|
+||SegmentTree.java|Segment tree2|
+||PatriciaST.java|PATRICIA trie symbol table3|
+||PatriciaSET.java|PATRICIA trie set3|
+||MultiwayMinPQ.java|Multiway heap4|
+||IndexMultiwayMinPQ.java|Index multiway heap4|
+||BinomialMinPQ.java|Binomial heap4|
+||IndexBinomialMinPQ.java|Index binomial heap4|
+||FibonacciMinPQ.java|Fibonacci heap4|
+||IndexFibonacciMinPQ.java|Index Fibonacci heap4|
+||AVLTreeST.java|AVL tree5|
