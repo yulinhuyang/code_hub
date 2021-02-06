@@ -80,9 +80,45 @@
 1.5.3　 展望　
 
 代码： 
-|序号|题目|级别|类别|
-|:-----|:-----|:-----|:-----|
-|1|Two Sum（两数之和）|Easy|
+
+|序号|题目|级别|
+|:-----|:-----|:-----|
+||BinarySearch.java|binary search| 
+||RandomSeq.java|random numbers in a given range| 
+||Average.java|average of a sequence of numbers| 
+||Cat.java|concatenate files|
+||Knuth.java|Knuth shuffle|
+||Counter.java|counter|
+||StaticSETofInts.java|set of integers|
+||Allowlist.java|allowlist client|
+||Vector.java|Euclidean vector|
+||Date.java|date|
+||Transaction.java|transaction|
+||Point2D.java|point|
+||RectHV.java|axis-aligned rectangle|
+||Interval1D.java|1d interval|
+||Interval2D.java|2d interval|
+||Accumulator.java|running average and stddev|
+|1.1|ResizingArrayStack.java|LIFO stack (resizing array)|
+|1.2|LinkedStack.java|LIFO stack (linked list)|
+||Stack.java|LIFO stack|
+||ResizingArrayQueue.java|FIFO queue (resizing array)|
+|1.3|LinkedQueue.java|FIFO queue (linked list)|
+||Queue.java|FIFO queue|
+||ResizingArrayBag.java|multiset (resizing array)|
+|1.4|LinkedBag.java|multiset (linked list)|
+||Bag.java|multiset|
+||Stopwatch.java|timer (wall time)|
+||StopwatchCPU.java|timer (CPU time)|
+||LinearRegression.java|simple linear regression|
+||ThreeSum.java|brute-force three sum|
+||ThreeSumFast.java|faster three sum|
+||DoublingTest.java|doubling test|
+||DoublingRatio.java|doubling ratio|
+||QuickFindUF.java|quick find|
+||QuickUnionUF.java|quick union|
+|1.5|WeightedQuickUnionUF.java|weighted quick union|
+||UF.java|union-by-rank with path halving|
 
 
 
