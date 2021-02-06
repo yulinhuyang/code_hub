@@ -58,7 +58,7 @@ java版本： CTCL、左程云指南
 |47|Permutations II|Hard|
 |48|Rotate Image（旋转图像）|Medium|
 |49|Group Anagrams（字母异位词分组）|Medium|
-|50|"""Pow(x| n)"""|Medium|
+|50|"""Pow(x/ n)"""|Medium|
 |51|N-Queens|Hard|
 |52|N-Queens II|Hard|
 |53|Maximum Subarray（最大子序和）|Medium|
