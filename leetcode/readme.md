@@ -236,3 +236,205 @@ java版本： CTCL、左程云指南
 |241|Different Ways to Add Parentheses|Medium|
 |242|Valid Anagram（有效的字母异位词）|Easy|
 
+|251|展开二维向量|Easy||
+|252|会议室|Medium||
+|253|会议室 II|Medium||
+|254|因子的组合|Medium||
+|255|验证前序遍历序列二叉搜索树|Medium||
+|256|"粉刷房子"|Easy||
+|257|Binary Tree Paths|Easy||
+|258|Add Digits|Easy||
+|259|较小的三数之和|Medium||
+|260|Single Number III|Medium||
+|261|以图判树|Medium||
+|263|Ugly Number|Easy||
+|264|Ugly Number II|Medium||
+|265|粉刷房子 II|Hard||
+|266|回文排列|Easy||
+|267|回文排列 II|Medium||
+|268|Missing Number（缺失数字）|Medium||
+|269|火星词典  |Hard||
+|270|最接近的二叉搜索树值|Easy||
+|273|Integer to English Words|Medium||
+|274|H-Index|Medium||
+|275|H-Index II|Medium||
+|278|First Bad Version|Easy||
+|279|Perfect Squares（完全平方数）|Medium||
+|282|Expression Add Operators|Hard||
+|283|Move Zeroes（移动零）|Easy||
+|284|Peeking Iterator|Medium||
+|285|Inorder Successor in BST|Medium||
+|287|Find the Duplicate Number（寻找重复数）|Hard||
+|289|Game of Life（生命游戏）|Medium||
+|290|Word Pattern|Easy||
+|292|Nim Game|Easy||
+|295|Find Median from Data Stream（数据流的中位数 ）|Hard||
+|297|Serialize and Deserialize Binary Tree（二叉树的序列化与反序列化）|Medium||
+|299|Bulls and Cows|Easy||
+|300|Longest Increasing Subsequence（最长上升子序列）|Medium||
+|301|Remove Invalid Parentheses（删除无效的括号）|Hard||
+|303|Range Sum Query - Immutable|Easy||
+|304|Range Sum Query 2D - Immutable|Medium||
+|306|Additive Number|Medium||
+|307|Range Sum Query - Mutable|Medium||
+|309|Best Time to Buy and Sell Stock with Cooldown（最佳买卖股票时机含冷冻期）|Medium||
+|310|Minimum Height Trees|Medium||
+|312|Burst Balloons（戳气球）|Hard||
+|313|Super Ugly Number|Medium||
+|315|Count of Smaller Numbers After Self（计算右侧小于当前元素的个数）|Hard||
+|316|Remove Duplicate Letters|Hard||
+|318|Maximum Product of Word Lengths|Medium||
+|319|Bulb Switcher|Medium||
+|321|Create Maximum Number|Hard||
+|322|Coin Change（零钱兑换）|Medium||
+|324|Wiggle Sort II（摆动排序 II）|Medium||
+|326|Power of Three（3的幂 ）|Easy||
+|327|Count of Range Sum|Hard||
+|328|Odd Even Linked List（奇偶链表）|Easy||
+|329|Longest Increasing Path in a Matrix（矩阵中的最长递增路径 ）|Medium||
+|330|Patching Array|Medium||
+|331|Verify Preorder Serialization of a Binary Tree|Medium||
+|332|Reconstruct Itinerary|Medium||
+|334|Increasing Triplet Subsequence（递增的三元子序列）|Medium||
+|336|Palindrome Pairs|Hard||
+|337|House Robber III（打家劫舍 III ）|Medium||
+|338|Counting Bits（比特位计数）|Medium||
+|341|Flatten Nested List Iterator（扁平化嵌套列表迭代器）|Medium||
+|342|Power of Four|Easy||
+|343|Integer Break|Medium||
+|344|Reverse String（反转字符串）|Easy||
+|345|Reverse Vowels of a String|Easy||
+|347|Top K Frequent Elements（前 K 个高频元素）|Medium||
+|349|Intersection of Two Arrays|Easy||
+|350|Intersection of Two Arrays II（两个数组的交集 II ）|Easy||
+|357|Count Numbers with Unique Digits|Medium||
+|367|Valid Perfect Square|Easy||
+|371|Sum of Two Integers（两整数之和）|Easy||
+|376|Wiggle Subsequence|Medium||
+|377|Combination Sum IV|Medium||
+|378|有序矩阵中第K小的元素|Medium||
+|380|Insert Delete GetRandom O(1)（常数时间插入、删除和获取随机元素 ）|Hard||
+|381|Insert Delete GetRandom O(1) - Duplicates allowed|Hard||
+|382|Linked List Random Node|Medium||
+|383|Ransom Note|Easy||
+|384|Shuffle an Array（打乱数组 ）|Medium||
+|385|Mini Parser|Medium||
+|386|Lexicographical Numbers|Medium||
+|387|First Unique Character in a String（字符串中的第一个唯一字符）|Easy||
+|388|Longest Absolute File Path|Medium||
+|389|Find the Difference|Easy||
+|390|Elimination Game|Medium||
+|391|Perfect Rectangle|Hard||
+|392|Is Subsequence|Medium||
+|393|UTF-8 Validation|Medium||
+|394|Decode String（字符串解码）|Medium||
+|395|Longest Substring with At Least K Repeating Characters（至少有K个重复字符的最长子串）|Medium||
+|396|Rotate Function|Easy||
+|397|Integer Replacement|Medium||
+|398|Random Pick Index|Medium||
+|399|Evaluate Division（除法求值）|Medium||
+|400|Nth Digit|Medium||
+|401|Binary Watch|Easy||
+|402|Remove K Digits|Medium||
+|403|Frog Jump|Hard||
+|404|Sum of Left Leaves|Easy||
+|405|Convert a Number to Hexadecimal|Easy||
+|406|Queue Reconstruction by Height（根据身高重建队列）|Medium||
+|409|Longest Palindrome|Easy||
+|410|Split Array Largest Sum|Hard||
+|412|Fizz Buzz|Easy||
+|413|Arithmetic Slices|Medium||
+|414|Third Maximum Number|Easy||
+|415|Add Strings|Easy||
+|416|Partition Equal Subset Sum（分割等和子集）|Medium||
+|418|SentenceScreenFitting|Easy||
+|437|Path Sum III（路径总和 III）|Medium||
+|438|Find all Anagrams in a string（找到字符串中所有字母异位词）|Medium||
+|448|找到所有数组中消失的数字（找到所有数组中消失的数字）|Easy||
+|449|Serialize and Deserialize BST|Medium||
+|450|DeleteNodeInABST|Medium||
+|454|四数相加 II  |||
+|461|汉明距离  |Easy||
+|463|Island Perimeter|Easy||
+|477|Total Hamming Distance|Medium||
+|494|目标和  |Medium||
+|509|Fibonacci Number|Easy||
+|518|Coin Change 2|Medium||
+|520|Detect Capital|Easy||
+|532|K-diff Pairs in an Array|Easy||
+|538|Convert BST to Greater Tree（把二叉搜索树转换为累加树 ）|Easy||
+|543|Diameter of Binary Tree（二叉树的直径）|Easy||
+|547|Friend Circles|Medium||
+|557|反转字符串中的单词 III  |Easy||
+|560|和为K的子数组 |Medium||
+|563|Binary Tree Tilt|Easy||
+|572|Subtree of Another Tree|Easy||
+|581|Shortest Unsorted Continuous Subarray（最短无序连续子数组）|Easy||
+|617|合并二叉树  |Easy||
+|621| 任务调度器  |Medium||
+|623|Add One Row to Tree|Medium||
+|628|Maximum Product of Three Numbers|Easy||
+|643|Maximum Average Subarray I|Easy||
+|647|Palindromic Substrings（回文子串）|Medium||
+|652|Find Duplicate Subtrees|Medium||
+|655|Print Binary Tree|Medium||
+|661|Image Smoother|Easy||
+|662|Maximum Width of Binary Tree|Medium||
+|665|Non-decreasing Array|Easy||
+|671|Second Minimum Node In a Binary Tree|Easy||
+|674|Longest Continuous Increasing Subsequence|Easy||
+|684|Redundant Connection|Medium||
+|687|Longest Univalue Path|Easy||
+|695|Max Area of Island|Medium||
+|712|Minimum ASCII Delete Sum for Two Strings|Medium||
+|714|Best Time to Buy and Sell Stock with Transaction Fee|Medium||
+|717|1-bit and 2-bit Characters|Easy||
+|721|Accounts Merge|Medium||
+|739|每日温度  |Medium||
+|746|Min Cost Climbing Stairs|Easy||
+|747|Largest Number At Least Twice of Others|Easy||
+|771|Jewels and Stones|Easy||
+|804|Unique Morse Code Words|Easy||
+|830|Positions of Large Groups|Easy||
+|837|Most Common Word|Easy||
+|844|Backspace String Compare|Easy||
+|849|Maximize Distance to Closest Person|Easy||
+|852|Peak Index in a Mountain Array|Easy||
+|858|Mirror Reflection|Medium||
+|859|Buddy Strings|Easy||
+|876|Middle of the Linked List|Easy||
+|905|Sort Array By Parity|Easy||
+|914|X of a Kind in a Deck of Cards|Easy||
+|922|Sort Array By Parity II|Easy||
+|931|Minimum Falling Path Sum|Medium||
+|941|Valid Mountain Array|Easy||
+|950|Reveal Cards In Increasing Order|Medium||
+|951|Flip Equivalent Binary Trees|Medium||
+|958|Check Completeness of a Binary Tree|Medium||
+|961|N-Repeated element in size 2N Array|Easy||
+|969|Pancake Sorting|Medium||
+|971|Flip Binary Tree To Match Preorder Traversal|Medium||
+|976|Largest Perimeter Triangle|Easy||
+|977|Squares of a Sorted Array|Easy||
+|978|Longest Turbulent Subarray|Medium||
+|979|Distribute Coins in Binary Tree|Medium||
+|980|Unique Paths III|Hard||
+|981|Time Based Key-Value Store|Medium||
+|983|Minimum Cost For Tickets|Medium||
+|984|String Without AAA or BBB|Easy||
+|985|Sum of Even Numbers After Queries|Easy||
+|986|Interval List Intersections|Medium||
+|987|Vertical Order Traversal of a Binary Tree|Medium||
+|988|Smallest String Starting From Leaf|Medium||
+|989|Add to Array-Form of Integer|Easy||
+|990|Satisfiability of Equality Equations|Medium||
+|991|Broken Calculator|Medium||
+|993|Cousins in Binary Tree|Easy||
+|1024|Video Stitching|Medium||
+|1028|Recover a Tree From Preorder Traversal|Hard||
+|1029|Two City Scheduling|Easy||
+|1030|Matrix Cells in Distance Order|Easy||
+|1170|Compare Strings by Frequency of the Smallest Character|Easy||
+|1207|Unique Number of Occurrences|Easy||
+
+
