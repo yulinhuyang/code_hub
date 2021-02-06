@@ -7,7 +7,7 @@ zhousoft/TsingHuaDataStructOj
 随书代码：  https://github.com/programming-book-practice/DSACPP
 
 
-ALG4:
+**ALG4**
 
 https://algs4.cs.princeton.edu/code/
 
@@ -16,31 +16,33 @@ https://github.com/kevin-wayne/algs4
 https://github.com/shellfly/algs4-py
 
 
-王争
+**王争**
 
 https://github.com/wangzheng0822/algo/tree/master/python
 
+
+**PythonDSA**
 
 Problem Solving with Algorithms and Data Structures Using Python SECOND EDITION
 
 开源版： https://github.com/facert/python-data-structure-cn
 
 
-算法设计手册
+**算法设计手册**
  
 https://www.algorist.com/
 
 ##  2  leetcode 
 
-labuladong
+**labuladong**
 
 https://github.com/labuladong/fucking-algorithm
 
-soulmachine 
+**soulmachine** 
 
 https://github.com/soulmachine/leetcode
 
-剑指offer
+**剑指offer**
 
 https://github.com/gatieme/CodingInterviews
 
@@ -54,7 +56,7 @@ https://blog.csdn.net/qq_21201267/article/details/104271963
 
 
 
-程序员金典
+**程序员金典**
 
 https://blog.csdn.net/qq_21201267/article/details/104306869
 
@@ -68,7 +70,7 @@ https://github.com/panxl6/cc150
 
 
 
-左程云指南
+**左程云指南**
 
 https://github.com/yiliyili/algorithms_zuochengyun
 
@@ -78,7 +80,7 @@ https://github.com/RobbChen/Algorithm-learning
 
 
 
-python版刷题汇总：
+**python版刷题汇总**：
 
 讲解
 https://github.com/grandyang/leetcode
