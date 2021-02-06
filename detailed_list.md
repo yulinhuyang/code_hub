@@ -82,28 +82,16 @@ https://github.com/RobbChen/Algorithm-learning
 
 **python版刷题汇总**：
 
-讲解
-https://github.com/grandyang/leetcode
-
-参考：
-
 https://github.com/azl397985856/leetcode
+
+https://github.com/keon/algorithms
 
 https://github.com/haoel/leetcode
 
 https://github.com/kamyu104/LeetCode-Solutions
 
-
-其他：
-
 https://blog.csdn.net/qq_32424059/article/details/88855423
 
-https://github.com/wuduhren/leetcode-python
 
-https://github.com/qiyuangong/leetcode
 
-https://github.com/algorhythms/
 
-https://github.com/JiayangWu/LeetCode-Python
-
-https://github.com/kamyu104/LeetCode-Solutions
