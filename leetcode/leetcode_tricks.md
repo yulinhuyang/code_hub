@@ -1,8 +1,8 @@
-1 C++、python 刷题技巧
+## 1 C++、python 刷题技巧
 
 
 
-2 leetcode 分类模板总结相关
+## 2 leetcode 分类模板总结相关
 
 暴力法
 
