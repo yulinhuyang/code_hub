@@ -1,7 +1,7 @@
 
 源码： https://github.com/zhedahht/CodingInterviewChinese2
 
-## Utilities
+##1  Utilities
 
 ### Array
 
@@ -409,7 +409,7 @@ void DestroyTree(BinaryTreeNode* pRoot)
 
 
 
-## 题目
+## 2  题目
 
 ### 02_Singleton
 
@@ -1100,7 +1100,4 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
-
-
 
