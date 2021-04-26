@@ -7,6 +7,8 @@
 
 // 的和正好是s。如果有多对数字的和等于s，输出任意一对即可。
 
+
+```c++
 #include <cstdio>
 
 bool FindNumbersWithSum(int data[], int length, int sum, 
@@ -99,6 +101,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ###  57_02_ContinuousSquenceWithSum
@@ -112,6 +115,7 @@ int main(int argc, char* argv[])
 // 4～6和7～8。
 
 
+```c++
 #include <cstdio>
 
 void PrintContinuousSequence(int small, int big);
@@ -173,6 +177,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ### 58_01_ReverseWordsInSentence
@@ -185,6 +190,8 @@ int main(int argc, char* argv[])
 
 // 则输出"student. a am I"。
 
+
+```c++
 #include <cstdio>
 #include "..\Utilities\StringUtil.h"
 #include <string>
@@ -288,6 +295,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ### 58_02_LeftRotateString
@@ -300,6 +308,8 @@ int main(int argc, char* argv[])
 
 // 字2，该函数将返回左旋转2位得到的结果"cdefgab"。
 
+
+```c++
 #include <cstdio>
 #include "..\Utilities\StringUtil.h"
 #include <string.h>
@@ -405,6 +415,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ###  59_01_MaxInSlidingWindow
@@ -418,6 +429,7 @@ int main(int argc, char* argv[])
 // 滑动窗口，它们的最大值分别为{4, 4, 6, 6, 6, 5}，
 
 
+```c++
 #include <cstdio>
 #include <vector>
 #include <deque>
@@ -614,7 +626,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
+```
 
 
 ###  59_02_QueueWithMax
@@ -628,6 +640,7 @@ int main(int argc, char* argv[])
 // 滑动窗口，它们的最大值分别为{4, 4, 6, 6, 6, 5}，
 
 
+```c++
 #include <cstdio>
 #include <deque>
 #include <exception>
@@ -757,6 +770,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ### 60_DicesProbability
@@ -768,6 +782,7 @@ int main(int argc, char* argv[])
 // 的所有可能的值出现的概率。
 
 
+```c++
 #include <cstdio>
 #include <math.h>
 
@@ -893,6 +908,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ###  61_ContinousCards
@@ -903,6 +919,8 @@ int main(int argc, char* argv[])
 
 // 2～10为数字本身，A为1，J为11，Q为12，K为13，而大、小王可以看成任意数字。
 
+
+```c++
 #include <cstdio>
 #include <cstdlib>
 
@@ -1002,7 +1020,7 @@ int main(int argc, char* argv[])
     Test6();
 
 }
-
+```
 
 ### 62_LastNumberInCircle
 
@@ -1012,6 +1030,8 @@ int main(int argc, char* argv[])
 
 // 删除第m个数字。求出这个圆圈里剩下的最后一个数字。
 
+
+```c++
 #include <cstdio>
 #include <list>
 
@@ -1105,6 +1125,8 @@ int main(int argc, char* argv[])
     Test3();
     Test4();
 }
+```
+
 
 
 ###  63_MaximalProfit
@@ -1121,6 +1143,7 @@ int main(int argc, char* argv[])
 // 收获最大的利润11。
 
 
+```c++
 #include <cstdio>
 
 int MaxDiff(const int* numbers, unsigned length)
@@ -1219,7 +1242,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
+```
 
 
 
