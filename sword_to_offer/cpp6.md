@@ -4,6 +4,7 @@
 
 // 题目：输入两个链表，找出它们的第一个公共结点。
 
+```c++
 #include <cstdio>
 #include "..\Utilities\List.h"
 
@@ -115,7 +116,7 @@ int main(int argc, char* argv[])
     Test2();
     Test3();
 }
-
+```
 
 ###  53_01_NumberOfK
 
@@ -123,6 +124,8 @@ int main(int argc, char* argv[])
 // 题目：统计一个数字在排序数组中出现的次数。例如输入排序数组{1, 2, 3, 3,
 // 3, 3, 4, 5}和数字3，由于3在这个数组中出现了4次，因此输出4。
 
+
+```c++
 #include <cstdio>
 
 int GetFirstK(const int* data, int length, int k, int start, int end);
@@ -255,6 +258,7 @@ int main(int argc, char* argv[])
     Test4();
     Test5();
 }
+```
 
 
 ###  53_02_MissingNumber
@@ -267,7 +271,7 @@ int main(int argc, char* argv[])
 
 // 中，请找出这个数字。
 
-
+```c++
 #include <cstdio>
 
 int GetMissingNumber(const int* numbers, int length)
@@ -342,6 +346,7 @@ int main(int argc, char* argv[])
     Test3();
     Test4();
 }
+```
 
 
 ### 53_03_IntegerIdenticalToIndex
@@ -354,6 +359,7 @@ int main(int argc, char* argv[])
 
 // 1, 3, 5}中，数字3和它的下标相等。
 
+```c++
 #include <cstdio>
 
 int GetNumberSameAsIndex(const int* numbers, int length)
@@ -446,6 +452,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ### 54_KthNodeInBST
@@ -455,6 +462,8 @@ int main(int argc, char* argv[])
 
 // 题目：给定一棵二叉搜索树，请找出其中的第k大的结点。
 
+
+```c++
 #include <cstdio>
 #include "../Utilities/BinaryTree.h"
 
@@ -565,6 +574,7 @@ int main(int argc, char* argv[])
     TestD();
     TestE();
 }
+```
 
 
 ###  55_01_TreeDepth
@@ -575,6 +585,8 @@ int main(int argc, char* argv[])
 
 // 结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。
 
+
+```c++
 #include <cstdio>
 #include "..\Utilities\BinaryTree.h"
 
@@ -652,6 +664,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ### 55_02_BalancedBinaryTree
@@ -662,6 +675,8 @@ int main(int argc, char* argv[])
 
 // 任意结点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。
 
+
+```c++
 #include <cstdio>
 #include "..\Utilities\BinaryTree.h"
 
@@ -822,6 +837,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ### 56_01_NumbersAppearOnce
@@ -832,6 +848,8 @@ int main(int argc, char* argv[])
 
 // 找出这两个只出现一次的数字。要求时间复杂度是O(n)，空间复杂度是O(1)。
 
+
+```c++
 #include <cstdio>
 
 unsigned int FindFirstBitIs1(int num);
@@ -920,6 +938,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ### 56_02_NumberAppearingOnce
@@ -930,6 +949,8 @@ int main(int argc, char* argv[])
 
 // 找出那个吃出现一次的数字。
 
+
+```c++
 #include <cstdio>
 #include <exception>
 
@@ -1058,5 +1079,5 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
+```
 
