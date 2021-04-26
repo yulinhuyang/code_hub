@@ -699,3 +699,349 @@ int main(int argc, char* argv[])
     Test3();
 
 }
+
+
+### 41_StreamMedian
+
+// 面试题41：数据流中的中位数
+
+// 题目：如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么
+
+// 中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，
+
+// 那么中位数就是所有数值排序之后中间两个数的平均值。
+
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+#include <functional>
+
+using namespace std;
+
+template<typename T> class DynamicArray
+{
+public:
+    void Insert(T num)
+    {
+        if(((min.size() + max.size()) & 1) == 0)
+        {
+            if(max.size() > 0 && num < max[0])
+            {
+                max.push_back(num);
+                push_heap(max.begin(), max.end(), less<T>());
+
+                num = max[0];
+
+                pop_heap(max.begin(), max.end(), less<T>());
+                max.pop_back();
+            }
+
+            min.push_back(num);
+            push_heap(min.begin(), min.end(), greater<T>());
+        }
+        else
+        {
+            if(min.size() > 0 && min[0] < num)
+            {
+                min.push_back(num);
+                push_heap(min.begin(), min.end(), greater<T>());
+
+                num = min[0];
+
+                pop_heap(min.begin(), min.end(), greater<T>());
+                min.pop_back();
+            }
+
+            max.push_back(num);
+            push_heap(max.begin(), max.end(), less<T>());
+        }
+    }
+
+    T GetMedian()
+    {
+        int size = min.size() + max.size();
+        if(size == 0)
+            throw exception("No numbers are available");
+
+        T median = 0;
+        if((size & 1) == 1)
+            median = min[0];
+        else
+            median = (min[0] + max[0]) / 2;
+
+        return median;
+    }
+
+private:
+    vector<T> min;
+    vector<T> max;
+};
+
+// ====================测试代码====================
+void Test(char* testName, DynamicArray<double>& numbers, double expected)
+{
+    if(testName != nullptr)
+        printf("%s begins: ", testName);
+
+    if(abs(numbers.GetMedian() - expected) < 0.0000001)
+        printf("Passed.\n");
+    else
+        printf("FAILED.\n");
+}
+
+int main(int argc, char* argv[])
+{
+    DynamicArray<double> numbers;
+
+    printf("Test1 begins: ");
+    try
+    {
+        numbers.GetMedian();
+        printf("FAILED.\n");
+    }
+    catch(const exception&)
+    {
+        printf("Passed.\n");
+    }
+
+    numbers.Insert(5);
+    Test("Test2", numbers, 5);
+
+    numbers.Insert(2);
+    Test("Test3", numbers, 3.5);
+
+    numbers.Insert(3);
+    Test("Test4", numbers, 3);
+    
+    numbers.Insert(4);
+    Test("Test6", numbers, 3.5);
+
+    numbers.Insert(1);
+    Test("Test5", numbers, 3);
+}
+
+
+### 42_GreatestSumOfSubarrays
+
+// 面试题42：连续子数组的最大和
+
+// 题目：输入一个整型数组，数组里有正数也有负数。数组中一个或连续的多个整
+
+// 数组成一个子数组。求所有子数组的和的最大值。要求时间复杂度为O(n)。
+
+#include <cstdio>
+
+bool g_InvalidInput = false;
+
+int FindGreatestSumOfSubArray(int *pData, int nLength)
+{
+    if((pData == nullptr) || (nLength <= 0))
+    {
+        g_InvalidInput = true;
+        return 0;
+    }
+
+    g_InvalidInput = false;
+
+    int nCurSum = 0;
+    int nGreatestSum = 0x80000000;
+    for(int i = 0; i < nLength; ++i)
+    {
+        if(nCurSum <= 0)
+            nCurSum = pData[i];
+        else
+            nCurSum += pData[i];
+
+        if(nCurSum > nGreatestSum)
+            nGreatestSum = nCurSum;
+    }
+
+    return nGreatestSum;
+} 
+
+// ====================测试代码====================
+void Test(char* testName, int* pData, int nLength, int expected, bool expectedFlag)
+{
+    if(testName != nullptr)
+        printf("%s begins: \n", testName);
+
+    int result = FindGreatestSumOfSubArray(pData, nLength);
+    if(result == expected && expectedFlag == g_InvalidInput)
+        printf("Passed.\n");
+    else
+        printf("Failed.\n");
+}
+
+// 1, -2, 3, 10, -4, 7, 2, -5
+void Test1()
+{
+    int data[] = {1, -2, 3, 10, -4, 7, 2, -5};
+    Test("Test1", data, sizeof(data) / sizeof(int), 18, false);
+}
+
+// 所有数字都是负数
+// -2, -8, -1, -5, -9
+void Test2()
+{
+    int data[] = {-2, -8, -1, -5, -9};
+    Test("Test2", data, sizeof(data) / sizeof(int), -1, false);
+}
+// 所有数字都是正数
+// 2, 8, 1, 5, 9
+void Test3()
+{
+    int data[] = {2, 8, 1, 5, 9};
+    Test("Test3", data, sizeof(data) / sizeof(int), 25, false);
+}
+
+// 无效输入
+void Test4()
+{
+    Test("Test4", nullptr, 0, 0, true);
+}
+
+int main(int argc, char* argv[])
+{
+    Test1();
+    Test2();
+    Test3();
+    Test4();
+
+    return 0;
+}
+
+
+### 43_NumberOf1
+
+// 面试题43：从1到n整数中1出现的次数
+
+// 题目：输入一个整数n，求从1到n这n个整数的十进制表示中1出现的次数。例如
+
+// 输入12，从1到12这些整数中包含1 的数字有1，10，11和12，1一共出现了5次。
+
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+
+// ====================方法一====================
+int NumberOf1(unsigned int n);
+
+int NumberOf1Between1AndN_Solution1(unsigned int n)
+{
+    int number = 0;
+
+    for(unsigned int i = 1; i <= n; ++ i)
+        number += NumberOf1(i);
+
+    return number;
+}
+
+int NumberOf1(unsigned int n)
+{
+    int number = 0;
+    while(n)
+    {
+        if(n % 10 == 1)
+            number ++;
+
+        n = n / 10;
+    }
+
+    return number;
+}
+
+// ====================方法二====================
+int NumberOf1(const char* strN);
+int PowerBase10(unsigned int n);
+
+int NumberOf1Between1AndN_Solution2(int n)
+{
+    if(n <= 0)
+        return 0;
+
+    char strN[50];
+    sprintf(strN, "%d", n);
+
+    return NumberOf1(strN);
+}
+
+int NumberOf1(const char* strN)
+{
+    if(!strN || *strN < '0' || *strN > '9' || *strN == '\0')
+        return 0;
+
+    int first = *strN - '0';
+    unsigned int length = static_cast<unsigned int>(strlen(strN));
+
+    if(length == 1 && first == 0)
+        return 0;
+
+    if(length == 1 && first > 0)
+        return 1;
+
+    // 假设strN是"21345"
+    // numFirstDigit是数字10000-19999的第一个位中1的数目
+    int numFirstDigit = 0;
+    if(first > 1)
+        numFirstDigit = PowerBase10(length - 1);
+    else if(first == 1)
+        numFirstDigit = atoi(strN + 1) + 1;
+
+    // numOtherDigits是01346-21345除了第一位之外的数位中1的数目
+    int numOtherDigits = first * (length - 1) * PowerBase10(length - 2);
+    // numRecursive是1-1345中1的数目
+    int numRecursive = NumberOf1(strN + 1);
+
+    return numFirstDigit + numOtherDigits + numRecursive;
+}
+
+int PowerBase10(unsigned int n)
+{
+    int result = 1;
+    for(unsigned int i = 0; i < n; ++ i)
+        result *= 10;
+
+    return result;
+}
+
+// ====================测试代码====================
+void Test(const char* testName, int n, int expected)
+{
+    if(testName != nullptr)
+        printf("%s begins: \n", testName);
+    
+    if(NumberOf1Between1AndN_Solution1(n) == expected)
+        printf("Solution1 passed.\n");
+    else
+        printf("Solution1 failed.\n"); 
+    
+    if(NumberOf1Between1AndN_Solution2(n) == expected)
+        printf("Solution2 passed.\n");
+    else
+        printf("Solution2 failed.\n"); 
+
+    printf("\n");
+}
+
+void Test()
+{
+    Test("Test1", 1, 1);
+    Test("Test2", 5, 1);
+    Test("Test3", 10, 2);
+    Test("Test4", 55, 16);
+    Test("Test5", 99, 20);
+    Test("Test6", 10000, 4001);
+    Test("Test7", 21345, 18821);
+    Test("Test8", 0, 0);
+}
+
+int main(int argc, char* argv[])
+{
+    Test();
+
+    return 0;
+}
+
+
+
+
