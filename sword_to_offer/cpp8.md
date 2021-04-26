@@ -6,6 +6,7 @@
 
 // 等关键字及条件判断语句（A?B:C）。
 
+```c++
 #include <cstdio>
 
 // ====================方法一====================
@@ -174,6 +175,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ### 65_AddTwoNumbers
@@ -185,6 +187,7 @@ int main(int argc, char* argv[])
 // 四则运算符号。
 
 
+```c++
 #include <cstdio>
 
 int Add(int num1, int num2)
@@ -228,6 +231,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ###  66_ConstuctArray
@@ -238,6 +242,8 @@ int main(int argc, char* argv[])
 
 // 中B中的元素B[i] =A[0]×A[1]×… ×A[i-1]×A[i+1]×…×A[n-1]。不能使用除法。
 
+
+```c++
 #include <cstdio>
 #include <vector>
 
@@ -364,6 +370,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ### 67_StringToInt
@@ -376,6 +383,7 @@ int main(int argc, char* argv[])
 // 能使用atoi或者其他类似的库函数
 
 
+```c++
 #include <cstdio>
 
 long long StrToIntCore(const char* str, bool minus);
@@ -487,7 +495,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
+```
 
 
 ### 68_CommonParentInTree
@@ -496,6 +504,8 @@ int main(int argc, char* argv[])
 
 // 题目：输入两个树结点，求它们的最低公共祖先。
 
+
+```c++
 #include <cstdio>
 #include "..\Utilities\Tree.h"
 #include <list>
@@ -682,7 +692,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
+```
 
 
 
