@@ -4,6 +4,7 @@
 // 题目：给定一棵二叉树和其中的一个结点，如何找出中序遍历顺序的下一个结点？
 // 树中的结点除了有两个分别指向左右子结点的指针以外，还有一个指向父结点的指针。
 
+```c++
 #include <stdio.h>
 
 struct BinaryTreeNode
@@ -164,12 +165,16 @@ void Test1_7()
     DestroyTree(pNode8);
 }
 
+```
 
 ### 09_QueueWithTwoStacks
 
 // 面试题9：用两个栈实现队列
 // 题目：用两个栈实现一个队列。队列的声明如下，请实现它的两个函数appendTail
 // 和deleteHead，分别完成在队列尾部插入结点和在队列头部删除结点的功能。
+
+
+```c++
 
 Queue.h
 
@@ -233,10 +238,6 @@ template<typename T> T CQueue<T>::deleteHead()
 
 QueueWithTwoStacks.cpp
 
-// 面试题9：用两个栈实现队列
-// 题目：用两个栈实现一个队列。队列的声明如下，请实现它的两个函数appendTail
-// 和deleteHead，分别完成在队列尾部插入结点和在队列头部删除结点的功能。
-
 #include "Queue.h"
 
 // ====================测试代码====================
@@ -275,6 +276,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ### 10_Fibonacci
@@ -282,6 +284,8 @@ int main(int argc, char* argv[])
 // 面试题10：斐波那契数列
 // 题目：写一个函数，输入n，求斐波那契（Fibonacci）数列的第n项。
 
+
+```c++
 
 Fibonacci.cpp
 
@@ -413,6 +417,8 @@ int main(int argc, char* argv[])
     Test(0, 0);
     Test(1, 1);
 }
+```
+
 
 ### 11_MinNumberInRotatedArray
 
@@ -422,6 +428,7 @@ int main(int argc, char* argv[])
 // {3, 4, 5, 1, 2}为{1, 2, 3, 4, 5}的一个旋转，该数组的最小值为1。
 
 
+```c++
 #include <cstdio>
 #include <exception>
 
@@ -530,6 +537,8 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
+
 
 ### 12_StringPathInMatrix
 
@@ -544,6 +553,8 @@ int main(int argc, char* argv[])
 // C F C S
 // J D E H
 
+
+```c++
 #include <cstdio>
 #include <string>
 #include <stack>
@@ -648,6 +659,7 @@ void Test2()
 
     Test("Test2", (const char*) matrix, 3, 4, str, true);
 }
+```
 
 
 ### 13_RobotMove
@@ -658,6 +670,8 @@ void Test2()
 // 大于k的格子。例如，当k为18时，机器人能够进入方格(35, 37)，因为3+5+3+7=18。
 // 但它不能进入方格(35, 38)，因为3+5+3+8=19。请问该机器人能够到达多少个格子？
 
+
+```c++
 #include <cstdio>
 
 int movingCountCore(int threshold, int rows, int cols, int row, int col, bool* visited);
@@ -748,7 +762,7 @@ void test2()
 {
     test("Test2", 15, 20, 20, 359);
 }
-
+```
 
 ### 14_CuttingRope
 
@@ -758,6 +772,8 @@ void test2()
 // 积是多少？例如当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此
 // 时得到最大的乘积18。
 
+
+```
 #include <iostream>
 #include <cmath>
 
@@ -842,6 +858,7 @@ void test1()
     int expected = 0;
     test("test1", length, expected);
 }
+```
 
 
 ### 15_NumberOf1InBinary
@@ -850,6 +867,8 @@ void test1()
 // 题目：请实现一个函数，输入一个整数，输出该数二进制表示中1的个数。例如
 // 把9表示成二进制是1001，有2位是1。因此如果输入9，该函数输出2。
 
+
+```c++
 #include <cstdio>
 
 int NumberOf1_Solution1(int n)
@@ -911,11 +930,16 @@ int main(int argc, char* argv[])
 
 }
 
+```
+
+
 ### 16_Power
 
 // 面试题16：数值的整数次方
 // 题目：实现函数double Power(double base, int exponent)，求base的exponent
 // 次方。不得使用库函数，同时不需要考虑大数问题。
+
+```c++
 
 #include <iostream>
 #include <cmath>
@@ -998,7 +1022,7 @@ int main(int argc, char* argv[])
     Test("Test2", -2, 3, -8, false);
 
 }
-
+```
 
 ###   17_Print1ToMaxOfNDigits
 
@@ -1006,6 +1030,8 @@ int main(int argc, char* argv[])
 // 题目：输入数字n，按顺序打印出从1最大的n位十进制数。比如输入3，则
 // 打印出1、2、3一直到最大的3位数即999
 
+
+```c++
 #include <cstdio>
 #include <memory>
 
@@ -1142,6 +1168,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 
 ###  18_01_DeleteNodeInList
@@ -1150,6 +1177,8 @@ int main(int argc, char* argv[])
 // 题目：给定单向链表的头指针和一个结点指针，定义一个函数在O(1)时间删除该
 // 结点。
 
+
+```c++
 #include <cstdio>
 #include "..\Utilities\List.h"
 
@@ -1229,7 +1258,7 @@ int main(int argc, char* argv[])
     Test1();
     Test2();
 }
-
+```
 
 ### 18_02_DeleteDuplicatedNode
 
@@ -1237,6 +1266,8 @@ int main(int argc, char* argv[])
 // 题目：在一个排序的链表中，如何删除重复的结点？例如，在图3.4（a）中重复
 // 结点被删除之后，链表如图3.4（b）所示。
 
+
+```c++
 #include <cstdio>
 #include "../Utilities/list.h"
 
@@ -1313,6 +1344,8 @@ void Test1()
     ListNode* pNode1 = CreateListNode(1);
     ListNode* pNode2 = CreateListNode(2);
 }
+```
+
 
 ### 19_RegularExpressionsMatching
 
@@ -1323,6 +1356,7 @@ void Test1()
 // 和"ab*ac*a"匹配，但与"aa.a"及"ab*a"均不匹配。
 
 
+```c++
 #include <cstdio>
 
 bool matchCore(const char* str, const char* pattern);
@@ -1382,7 +1416,7 @@ int main(int argc, char* argv[])
     Test("Test03", "", ".", false);
 
 }
-
+```
 
 ### 20_NumericStrings
 
@@ -1391,6 +1425,8 @@ int main(int argc, char* argv[])
 // 字符串“+100”、“5e2”、“-123”、“3.1416”及“-1E-16”都表示数值，但“12e”、
 // “1a3.14”、“1.2.3”、“+-5”及“12e+5.4”都不是
 
+
+```c++
 #include <stdio.h>
 
 bool scanUnsignedInteger(const char** str);
@@ -1468,7 +1504,7 @@ int main(int argc, char* argv[])
     Test("Test2", "123.45e+6", true);
     Test("Test3", "+500", true);
 }
-
+```
 
 ### 21_ReorderArray
 
@@ -1476,6 +1512,9 @@ int main(int argc, char* argv[])
 // 题目：输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有
 // 奇数位于数组的前半部分，所有偶数位于数组的后半部分。
 
+
+
+```c++
 #include <cstdio>
 
 void Reorder(int *pData, unsigned int length, bool (*func)(int));
@@ -1600,7 +1639,7 @@ int main(int argc, char* argv[])
     Test1();
     Test2();
 }
-
+```
 
 ### 22_KthNodeFromEnd
 
@@ -1611,6 +1650,7 @@ int main(int argc, char* argv[])
 // 值为4的结点。
 
 
+```c++
 #include <cstdio>
 #include "..\Utilities\List.h"
 
@@ -1664,3 +1704,4 @@ void Test1()
 
     DestroyList(pNode1);
 }
+```
