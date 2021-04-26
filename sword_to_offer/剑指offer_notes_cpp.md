@@ -2,7 +2,8 @@
 源码： https://github.com/zhedahht/CodingInterviewChinese2
 
 
-前言
+## 目录：
+
 2. 实现 Singleton
 
 3. 数组中重复的数字
