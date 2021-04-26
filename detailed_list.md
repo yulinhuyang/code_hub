@@ -1,3 +1,5 @@
+
+
 ## 1  数据结构与算法：
 
 **DSACPP DJH**
@@ -96,6 +98,14 @@ https://github.com/haoel/leetcode
 https://github.com/kamyu104/LeetCode-Solutions
 
 https://blog.csdn.net/qq_32424059/article/details/88855423
+
+
+
+### 必备小册子
+
+算法4 + DSAPP
+
+剑指offer + labuladong + leetcode 200题
 
 
 
