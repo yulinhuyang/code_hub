@@ -520,6 +520,432 @@ int binarySearch(int[] nums, int target) {
 }
 ```
 
+### 二、寻找左侧边界的二分搜索
+
+以下是最常见的代码形式，其中的标记是需要注意的细节：
+
+```java
+int left_bound(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    // 搜索区间为 [left, right]
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            // 搜索区间变为 [mid+1, right]
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            // 搜索区间变为 [left, mid-1]
+            right = mid - 1;
+        } else if (nums[mid] == target) {
+            // 收缩右侧边界
+            right = mid - 1;
+        }
+    }
+    // 检查出界情况
+    if (left >= nums.length || nums[left] != target)
+        return -1;
+    return left;
+}
+```
+
+### 三、寻找右侧边界的二分查找
+
+类似寻找左侧边界的算法，这里也会提供两种写法，还是先写常见的左闭右开的写法，只有两处和搜索左侧边界不同，已标注：
+
+```java
+int right_bound(int[] nums, int target) {
+    if (nums.length == 0) return -1;
+    int left = 0, right = nums.length;
+    
+    while (left < right) {
+        int mid = (left + right) / 2;
+        if (nums[mid] == target) {
+            left = mid + 1; // 注意
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid;
+        }
+    }
+    return left - 1; // 注意
+}
+```
+
+是否也可以把这个算法的「搜索区间」也统一成两端都闭的形式呢？这样这三个写法就完全统一了，以后就可以闭着眼睛写出来了**。
+
+答：当然可以，类似搜索左侧边界的统一写法，其实只要改两个地方就行了：
+
+```java
+int right_bound(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid - 1;
+        } else if (nums[mid] == target) {
+            // 这里改成收缩左侧边界即可
+            left = mid + 1;
+        }
+    }
+    // 这里改为检查 right 越界的情况，见下图
+    if (right < 0 || nums[right] != target)
+        return -1;
+    return right;
+}
+```
 
 
+对于寻找左右边界的二分搜索，常见的手法是使用左闭右开的「搜索区间」，**我们还根据逻辑将「搜索区间」全都统一成了两端都闭，便于记忆，只要修改两处即可变化出三种写法**：
 
+```java
+int binary_search(int[] nums, int target) {
+    int left = 0, right = nums.length - 1; 
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid - 1; 
+        } else if(nums[mid] == target) {
+            // 直接返回
+            return mid;
+        }
+    }
+    // 直接返回
+    return -1;
+}
+
+int left_bound(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid - 1;
+        } else if (nums[mid] == target) {
+            // 别返回，锁定左侧边界
+            right = mid - 1;
+        }
+    }
+    // 最后要检查 left 越界的情况
+    if (left >= nums.length || nums[left] != target)
+        return -1;
+    return left;
+}
+
+
+int right_bound(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid - 1;
+        } else if (nums[mid] == target) {
+            // 别返回，锁定右侧边界
+            left = mid + 1;
+        }
+    }
+    // 最后要检查 right 越界的情况
+    if (right < 0 || nums[right] != target)
+        return -1;
+    return right;
+}
+```
+
+
+### python版本代码
+
+[MarineJoker](https://github.com/MarineJoker) 提供 Python3 代码  
+
+```python
+# 基本二分搜索
+def binarySearch(nums, target):
+    left = 0
+    right = len(nums) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            # 直接返回
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        elif nums[mid] > target:
+            right = mid - 1
+    # 直接返回
+    return -1
+
+
+# 寻找左侧边界的二分搜索，开区间写法
+def left_bound(nums, target):
+    left, right = 0, len(nums)
+    if right == 0:
+        return -1
+    while left < right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            # 锁定左侧边界
+            right = mid
+        elif nums[mid] < target:
+            left = mid + 1
+        elif nums[mid] > target:
+            right = mid
+    # 检查left越界情况
+    if left >= len(nums) or nums[left] != target:
+        return -1
+    return left
+
+
+# 寻找右侧边界的二分搜索，开区间写法
+def right_bound(nums, target):
+    left, right = 0, len(nums)
+    if right == 0:
+        return -1
+    while left < right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            # 锁定右侧边界
+            left = mid + 1
+        elif nums[mid] < target:
+            left = mid + 1
+        elif nums[mid] > target:
+            right = mid
+    # 检查越界情况
+    if left == 0 or nums[left - 1] != target:
+        return -1
+    return left - 1
+
+
+# 寻找左侧边界的二分搜索，闭区间写法
+def left_bound(nums, target):
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            # 锁定左侧边界
+            right = mid - 1
+        elif nums[mid] < target:
+            left = mid + 1
+        elif nums[mid] > target:
+            right = mid - 1
+    # 检查left越界情况
+    if left >= len(nums) or nums[left] != target:
+        return -1
+    return left
+
+# 寻找右侧边界的二分搜索，闭区间写法
+def right_bound(nums, target):
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            # 锁定右侧边界
+            left = mid + 1
+        elif nums[mid] < target:
+            left = mid + 1
+        elif nums[mid] > target:
+            right = mid - 1
+    # 检查right越界情况
+    if right < 0 or nums[right] != target:
+        return -1
+    return right
+```
+
+
+## 4  滑动窗口解题框架
+
+### 一、最小覆盖子串
+
+```cpp
+string minWindow(string s, string t) {
+    // 记录最短子串的开始位置和长度
+    int start = 0, minLen = INT_MAX;
+    int left = 0, right = 0;
+    
+    unordered_map<char, int> window;
+    unordered_map<char, int> needs;
+    for (char c : t) needs[c]++;
+    
+    int match = 0;
+    
+    while (right < s.size()) {
+        char c1 = s[right];
+        if (needs.count(c1)) {
+            window[c1]++;
+            if (window[c1] == needs[c1]) 
+                match++;
+        }
+        right++;
+        
+        while (match == needs.size()) {
+            if (right - left < minLen) {
+                // 更新最小子串的位置和长度
+                start = left;
+                minLen = right - left;
+            }
+            char c2 = s[left];
+            if (needs.count(c2)) {
+                window[c2]--;
+                if (window[c2] < needs[c2])
+                    match--;
+            }
+            left++;
+        }
+    }
+    return minLen == INT_MAX ?
+                "" : s.substr(start, minLen);
+}
+```
+
+### 二、找到字符串中所有字母异位词
+
+实际上，这个 Easy 是属于了解双指针技巧的人的，只要把上一道题的代码改中更新 res 部分的代码稍加修改就成了这道题的解：
+
+```cpp
+vector<int> findAnagrams(string s, string t) {
+    // 用数组记录答案
+    vector<int> res;
+    int left = 0, right = 0;
+    unordered_map<char, int> needs;
+    unordered_map<char, int> window;
+    for (char c : t) needs[c]++;
+    int match = 0;
+    
+    while (right < s.size()) {
+        char c1 = s[right];
+        if (needs.count(c1)) {
+            window[c1]++;
+            if (window[c1] == needs[c1])
+                match++;
+        }
+        right++;
+
+        while (match == needs.size()) {
+            // 如果 window 的大小合适
+            // 就把起始索引 left 加入结果
+            if (right - left == t.size()) {
+                res.push_back(left);
+            }
+            char c2 = s[left];
+            if (needs.count(c2)) {
+                window[c2]--;
+                if (window[c2] < needs[c2])
+                    match--;
+            }
+            left++;
+        }
+    }
+    return res;
+}
+```
+### 三、无重复字符的最长子串
+
+类似之前的思路，使用 window 作为计数器记录窗口中的字符出现次数，然后先向右移动 right，当 window 中出现重复字符时，开始移动 left 缩小窗口，如此往复：
+
+```cpp
+int lengthOfLongestSubstring(string s) {
+    int left = 0, right = 0;
+    unordered_map<char, int> window;
+    int res = 0; // 记录最长长度
+
+    while (right < s.size()) {
+        char c1 = s[right];
+        window[c1]++;
+        right++;
+        // 如果 window 中出现重复字符
+        // 开始移动 left 缩小窗口
+        while (window[c1] > 1) {
+            char c2 = s[left];
+            window[c2]--;
+            left++;
+        }
+        res = max(res, right - left);
+    }
+    return res;
+}
+```
+
+通过上面三道题，我们可以总结出滑动窗口算法的抽象思想：
+
+```java
+int left = 0, right = 0;
+
+while (right < s.size()) {
+    window.add(s[right]);
+    right++;
+    
+    while (valid) {
+        window.remove(s[left]);
+        left++;
+    }
+}
+```
+
+
+[Jiajun](https://github.com/liujiajun) 提供最小覆盖子串 Python3 代码：
+```python3
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        # 最短子串开始位置和长度
+        start, min_len = 0, float('Inf')
+        left, right = 0, 0
+        res = s
+        
+        # 两个计数器
+        needs = Counter(t)
+        window = collections.defaultdict(int) 
+        # defaultdict在访问的key不存在的时候返回默认值0, 可以减少一次逻辑判断
+        
+        match = 0
+        
+        while right < len(s):
+            c1 = s[right]
+            if needs[c1] > 0:
+                window[c1] += 1
+                if window[c1] == needs[c1]:
+                    match += 1
+            right += 1
+            
+            while match == len(needs):
+                if right - left < min_len:
+                    # 更新最小子串长度
+                    min_len = right - left
+                    start = left
+                c2 = s[left]
+                if needs[c2] > 0:
+                    window[c2] -= 1
+                    if window[c2] < needs[c2]:
+                        match -= 1
+                left += 1
+        
+        return s[start:start+min_len] if min_len != float("Inf") else ""
+```
+
+第3题 Python3 代码（提供: [FaDrYL](https://github.com/FaDrYL) ）：
+```python
+def lengthOfLongestSubstring(self, s: str) -> int:
+    # 子字符串
+    sub = ""
+    largest = 0
+    
+    # 循环字符串，将当前字符加入子字符串，并检查长度
+    for i in range(len(s)):
+        if s[i] not in sub:
+            # 当前字符不存在于子字符串中，加入当前字符
+            sub += s[i]
+        else:
+            # 如果当前子字符串的长度超过了之前的记录
+            if len(sub) > largest:
+                largest = len(sub)
+            # 将子字符串从当前字符处+1切片至最后，并加入当前字符
+            sub = sub[sub.find(s[i])+1:] + s[i]
+            
+    # 如果最后的子字符串长度超过了之前的记录
+    if len(sub) > largest:
+        return len(sub)
+    return largest
+```
