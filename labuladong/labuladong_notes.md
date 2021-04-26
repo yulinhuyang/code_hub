@@ -949,3 +949,250 @@ def lengthOfLongestSubstring(self, s: str) -> int:
         return len(sub)
     return largest
 ```
+
+
+## 5  双指针技巧
+
+### 一、快慢指针的常见算法
+
+**1、判定链表中是否含有环**
+
+如果链表中不含环，那么这个指针最终会遇到空指针 null 表示链表到头了，这还好说，可以判断该链表不含环。
+```java
+boolean hasCycle(ListNode head) {
+    ListNode fast, slow;
+    fast = slow = head;
+    while (fast != null && fast.next != null) {
+        fast = fast.next.next;
+        slow = slow.next;
+        
+        if (fast == slow) return true;
+    }
+    return false;
+}
+```
+
+**2、已知链表中含有环，返回这个环的起始位置**
+
+```java
+ListNode detectCycle(ListNode head) {
+    ListNode fast, slow;
+    fast = slow = head;
+    while (fast != null && fast.next != null) {
+        fast = fast.next.next;
+        slow = slow.next;
+        if (fast == slow) break;
+    }
+    // 上面的代码类似 hasCycle 函数
+    if (fast == null || fast.next == null) {
+        // fast 遇到空指针说明没有环
+        return null;
+    }
+
+    slow = head;
+    while (slow != fast) {
+        fast = fast.next;
+        slow = slow.next;
+    }
+    return slow;
+}
+```
+
+**3、寻找链表的中点**
+
+```java
+while (fast != null && fast.next != null) {
+    fast = fast.next.next;
+    slow = slow.next;
+}
+// slow 就在中间位置
+return slow;
+```
+
+
+**4、寻找链表的倒数第 k 个元素**
+
+我们的思路还是使用快慢指针，让快指针先走 k 步，然后快慢指针开始同速前进。这样当快指针走到链表末尾 null 时，慢指针所在的位置就是倒数第 k 个链表节点（为了简化，假设 k 不会超过链表长度）：
+
+```java
+ListNode slow, fast;
+slow = fast = head;
+while (k-- > 0) 
+    fast = fast.next;
+
+while (fast != null) {
+    slow = slow.next;
+    fast = fast.next;
+}
+return slow;
+```
+
+### 二、左右指针的常用算法
+
+左右指针在数组中实际是指两个索引值，一般初始化为 left = 0, right = nums.length - 1 。
+
+**1、二分查找**
+
+前文「二分查找」有详细讲解，这里只写最简单的二分算法，旨在突出它的双指针特性：
+
+```java
+int binarySearch(int[] nums, int target) {
+    int left = 0; 
+    int right = nums.length - 1;
+    while(left <= right) {
+        int mid = (right + left) / 2;
+        if(nums[mid] == target)
+            return mid; 
+        else if (nums[mid] < target)
+            left = mid + 1; 
+        else if (nums[mid] > target)
+            right = mid - 1;
+    }
+    return -1;
+}
+```
+
+**2、两数之和**
+
+直接看一道 LeetCode 题目吧：
+
+只要数组有序，就应该想到双指针技巧。这道题的解法有点类似二分查找，通过调节 left 和 right 可以调整 sum 的大小：
+
+```java
+int[] twoSum(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int sum = nums[left] + nums[right];
+        if (sum == target) {
+            // 题目要求的索引是从 1 开始的
+            return new int[]{left + 1, right + 1};
+        } else if (sum < target) {
+            left++; // 让 sum 大一点
+        } else if (sum > target) {
+            right--; // 让 sum 小一点
+        }
+    }
+    return new int[]{-1, -1};
+}
+```
+
+**3、反转数组**
+
+```java
+void reverse(int[] nums) {
+    int left = 0;
+    int right = nums.length - 1;
+    while (left < right) {
+        // swap(nums[left], nums[right])
+        int temp = nums[left];
+        nums[left] = nums[right];
+        nums[right] = temp;
+        left++; right--;
+    }
+}
+```
+**4、滑动窗口算法**
+
+这也许是双指针技巧的最高境界了，如果掌握了此算法，可以解决一大类子字符串匹配的问题，不过「滑动窗口」稍微比上述的这些算法复杂些。
+
+#### 其他语言  C++
+
+```cpp
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        // 链表为空或有一个元素，则无环
+        if(!head || !head->next) return false; 
+        
+        ListNode* slow = head;
+        ListNode* fast = head->next;
+
+        while(fast && fast->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+            // 快慢指针相遇，则有环
+            if(fast == slow) return true;
+        }
+        return false; // 链表走完，快慢指针未相遇，则无环
+    }
+};
+```
+
+
+> 其实快慢指针问题，也就是著名的 *[Floyd's cycle detection algorithm](https://en.wikipedia.org/wiki/Cycle_detection#Floyd's_Tortoise_and_Hare)* 问题。
+
+```c++
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        // 如果链表为空或者第一个结点的指针为空，则无环
+        if (!head || !head->next) {
+            return NULL;
+        }
+
+        // 快慢指针找相遇点
+        ListNode *fast = head, *slow = head;
+        while (fast && fast->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+            if (fast == slow) {
+                break;
+            }
+        }
+        // 如果没有相遇点，表示没有环，直接返回即可
+        // 此时，快慢指针要么指向同一个结点，要么快指针指向空（偶数个结点）或者倒数第一个结点（奇数个结点）
+        if (fast != slow) {
+            return NULL;
+        }
+        //让慢指针回到第一个结点，然后快慢指针重新同步前进，两指针相遇时就是环的起点位置
+        slow = head;
+        while (fast != slow) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        return fast;
+    }
+};
+```
+
+
+#### 其他语言 python
+
+[MarineJoker](https://github.com/MarineJoker) 提供 167.两数之和 II - 输入有序数组 Python 代码
+```python
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left, right = 0, len(numbers) - 1
+        while left < right:
+            two_sum = numbers[left] + numbers[right]
+            if two_sum > target:
+                right -= 1 # 使得two_sum变小
+            elif two_sum < target:
+                left += 1 # 使得two_sum变大
+            elif two_sum == target:
+                return [left+1, right+1] # 由于索引由1开始
+        return [-1, -1]
+```
+
+[ryandeng32](https://github.com/ryandeng32/) 提供 Python 代码
+```python
+class Solution:
+    def hasCycle(self, head: ListNode) -> bool:
+        # 检查链表头是否为None，是的话则不可能为环形
+        if head is None: 
+            return False 
+        # 快慢指针初始化
+        slow = fast = head 
+        # 若链表非环形则快指针终究会遇到None，然后退出循环
+        while fast.next and fast.next.next: 
+            # 更新快慢指针
+            slow = slow.next
+            fast = fast.next.next
+            # 快指针追上慢指针则链表为环形
+            if slow == fast: 
+                return True 
+        # 退出循环，则链表有结束，不可能为环形
+        return False 
+```
+
+
