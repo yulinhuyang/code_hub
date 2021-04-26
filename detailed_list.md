@@ -101,7 +101,7 @@ https://blog.csdn.net/qq_32424059/article/details/88855423
 
 
 
-### 必备整理小册子
+### 必备要点 整理小册子
 
 算法4 + DSAPP
 
