@@ -8,6 +8,8 @@
 
 // 个函数求任意位对应的数字。
 
+
+```c++
 #include <iostream>
 #include <algorithm>
 
@@ -210,17 +212,23 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```c++
 
 ### 46_TranslateNumbersToStrings
 
 
 // 面试题46：把数字翻译成字符串
+
 // 题目：给定一个数字，我们按照如下规则把它翻译为字符串：0翻译成"a"，1翻
+
 // 译成"b"，……，11翻译成"l"，……，25翻译成"z"。一个数字可能有多个翻译。例
+
 // 如12258有5种不同的翻译，它们分别是"bccfi"、"bwfi"、"bczi"、"mcfi"和
+
 // "mzi"。请编程实现一个函数用来计算一个数字有多少种不同的翻译方法。
 
 
+```c++
 #include <string>
 #include <iostream>
 
@@ -318,18 +326,22 @@ int main(int argc, char* argv[])
     Test3();
     Test4();
 }
-
+```
 
 ### 47_MaxValueOfGifts
 
 // 面试题47：礼物的最大价值
+
 // 题目：在一个m×n的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值
+
 // （价值大于0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向左或
+
 // 者向下移动一格直到到达棋盘的右下角。给定一个棋盘及其上面的礼物，请计
+
 // 算你最多能拿到多少价值的礼物？
 
 
-
+```c++
 #include <algorithm>
 #include <iostream>
 
@@ -486,14 +498,17 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
+```
 
 ### 48_LongestSubstringWithoutDup
 
 // 面试题48：最长不含重复字符的子字符串
+
 // 题目：请从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子
+
 // 字符串的长度。假设字符串中只包含从'a'到'z'的字符。
 
+```c++
 #include <string>
 #include <iostream>
 
@@ -643,15 +658,20 @@ int main(int argc, char* argv[])
     test5();
 
 }
-
+```
 
 ### 49_UglyNumber
 
 // 面试题49：丑数
+
 // 题目：我们把只包含因子2、3和5的数称作丑数（Ugly Number）。求按从小到
+
 // 大的顺序的第1500个丑数。例如6、8都是丑数，但14不是，因为它包含因子7。
+
 // 习惯上我们把1当做第一个丑数。
 
+
+```c++
 #include <cstdio>
 
 // ====================算法1的代码====================
@@ -756,15 +776,18 @@ int main(int argc, char* argv[])
     Test(1500, 859963392);
 
 }
-
+```
 
 ### 50_01_FirstNotRepeatingChar
 
 // 面试题50（一）：字符串中第一个只出现一次的字符
+
 // 题目：在字符串中找出第一个只出现一次的字符。如输入"abaccdeff"，则输出
+
 // 'b'。
 
 
+```c++
 #include <cstdio>
 #include <string>
 
@@ -819,7 +842,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
+```
 
 ###  50_02_FirstCharacterInStream
 
@@ -831,7 +854,7 @@ int main(int argc, char* argv[])
 
 // 符流中读出前六个字符"google"时，第一个只出现一次的字符是'l'。
 
-
+```c++
 #include <cstdio>
 #include <vector>
 #include <limits>
@@ -910,14 +933,18 @@ int main(int argc, char* argv[])
     Test("Test4", chars, 'g');
 
 }
+```
 
 
 ### 51_InversePairs
 
 // 面试题51：数组中的逆序对
+
 // 题目：在数组中的两个数字如果前面一个数字大于后面的数字，则这两个数字组
+
 // 成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。
 
+```c++
 #include <cstdio>
 
 int InversePairsCore(int* data, int* copy, int start, int end);
@@ -1023,7 +1050,7 @@ int main(int argc, char* argv[])
     Test2();
     Test3();
 }
-
+```
 
 
 
