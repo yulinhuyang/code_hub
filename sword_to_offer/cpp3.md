@@ -1,9 +1,12 @@
 ### 23_EntryNodeInListLoop
 
 // 面试题23：链表中环的入口结点
+
 // 题目：一个链表中包含环，如何找出环的入口结点？例如，在图3.8的链表中，
+
 // 环的入口结点是结点3。
 
+```c++
 #include <cstdio>
 #include "../Utilities/list.h"
 
@@ -96,14 +99,17 @@ void Test2()
     delete pNode1;
     pNode1 = nullptr;
 }
-
+```
 
 ###   24_ReverseList
 
 // 面试题24：反转链表
+
 // 题目：定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的
+
 // 头结点。
 
+```c++
 #include <cstdio>
 #include "..\Utilities\List.h"
 
@@ -166,17 +172,21 @@ int main(int argc, char* argv[])
 {
     Test1();
 }
-
+```
 
 
 ### 25_MergeSortedLists
 
 
 // 面试题25：合并两个排序的链表
+
 // 题目：输入两个递增排序的链表，合并这两个链表并使新链表中的结点仍然是按
+
 // 照递增排序的。例如输入图3.11中的链表1和链表2，则合并之后的升序链表如链
+
 // 表3所示。
 
+```c++
 #include <cstdio>
 #include "..\Utilities\List.h"
 
@@ -252,13 +262,15 @@ int main(int argc, char* argv[])
     Test1();
     Test2();
 }
-
+```
 
 ### 26_SubstructureInTree
 
 // 面试题26：树的子结构
+
 // 题目：输入两棵二叉树A和B，判断B是不是A的子结构。
 
+```c++
 #include <cstdio>
 
 struct BinaryTreeNode
@@ -394,13 +406,15 @@ int main(int argc, char* argv[])
     Test1();
     Test2();
 }
- 
+```
 
 ### 27_MirrorOfBinaryTree
 
 // 面试题27：二叉树的镜像
+
 // 题目：请完成一个函数，输入一个二叉树，该函数输出它的镜像。
 
+```c++
 #include <cstdio>
 #include "..\Utilities\BinaryTree.h"
 #include <stack>
@@ -476,14 +490,17 @@ int main(int argc, char* argv[])
     Test1();
     Test2();
  }
-
+```
 
 ### 28_SymmetricalBinaryTree
  
 // 面试题28：对称的二叉树
+
 // 题目：请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和
+
 // 它的镜像一样，那么它是对称的。 
 
+```c++
 #include <cstdio>
 #include "../Utilities/BinaryTree.h"
 
@@ -548,13 +565,16 @@ void main(int argc, char* argv[])
     Test1();
     Test2();
 }
-
+```
 
 ###  29_PrintMatrix
 
+
 // 面试题29：顺时针打印矩阵
+
 // 题目：输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
 
+```c++
 #include <cstdio>
 
 void PrintMatrixInCircle(int** numbers, int columns, int rows, int start);
@@ -664,14 +684,17 @@ int main(int argc, char* argv[])
     Test(2, 2);
 
 }
-
+```
 
 ### 30_MinInStack
 
 // 面试题30：包含min函数的栈
+
 // 题目：定义栈的数据结构，请在该类型中实现一个能够得到栈的最小元素的min
+
 // 函数。在该栈中，调用min、push及pop的时间复杂度都是O(1)。
 
+```c++
 StackWithMin.h
 
 #pragma once
@@ -801,16 +824,21 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+```
 
 ### 31_StackPushPopOrder
 
 // 面试题31：栈的压入、弹出序列
+
 // 题目：输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是
+
 // 否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如序列1、2、3、4、
+
 // 5是某栈的压栈序列，序列4、5、3、2、1是该压栈序列对应的一个弹出序列，但
+
 // 4、3、5、1、2就不可能是该压栈序列的弹出序列。
 
-
+```c++
 StackPushPopOrder.cpp
 
 #include <cstdio>
@@ -892,14 +920,17 @@ int main(int argc, char* argv[])
     Test2();
     Test3();
 }
+```
 
 
 ### 32_01_PrintTreeFromTopToBottom
 
 // 面试题32（一）：不分行从上往下打印二叉树
+
 // 题目：从上往下打印出二叉树的每个结点，同一层的结点按照从左到右的顺序打印。
 
 
+```c++
 #include <cstdio>
 #include "..\Utilities\BinaryTree.h"
 #include <deque>
@@ -971,14 +1002,18 @@ int main(int argc, char* argv[])
     Test1();
     Test2();
 }
+```
 
 
 ### 32_02_PrintTreesInLines
 
 // 面试题32（二）：分行从上到下打印二叉树
+
 // 题目：从上到下按层打印二叉树，同一层的结点按从左到右的顺序打印，每一层
+
 // 打印到一行。
 
+```c++
 #include <cstdio>
 #include "..\Utilities\BinaryTree.h"
 #include <queue>
@@ -1049,15 +1084,21 @@ void Test1()
 
     DestroyTree(pNode8);
 }
+```
+
 
 ### 32_03_PrintTreesInZigzag
 
 
 // 面试题32（三）：之字形打印二叉树
+
 // 题目：请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺
+
 // 序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，
+
 // 其他行以此类推。
 
+```c++
 #include <cstdio>
 #include "..\Utilities\BinaryTree.h"
 #include <stack>
@@ -1139,15 +1180,20 @@ int main(int argc, char* argv[])
     Test1();
     Test2();
 }
-
+```
 
 #### 33_SquenceOfBST
 
-SquenceOfBST.cpp
 
 // 面试题33：二叉搜索树的后序遍历序列
+
 // 题目：输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。
+
 // 如果是则返回true，否则返回false。假设输入的数组的任意两个数字都互不相同。
+
+```c++
+
+SquenceOfBST.cpp
 
 #include <cstdio>
 
@@ -1210,14 +1256,18 @@ void Test1()
     int data[] = {4, 8, 6, 12, 16, 14, 10};
     Test("Test1", data, sizeof(data)/sizeof(int), true);
 }
-
+```
 
 ### 34_PathInTree
 
 // 面试题34：二叉树中和为某一值的路径
+
 // 题目：输入一棵二叉树和一个整数，打印出二叉树中结点值的和为输入整数的所
+
 // 有路径。从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
 
+
+```c++
 #include <cstdio>
 #include "..\Utilities\BinaryTree.h"
 #include <vector>
@@ -1311,14 +1361,20 @@ int main(int argc, char* argv[])
     Test2();
 
 }
+```
 
 ### 35_CopyComplexList
 
 // 面试题35：复杂链表的复制
+
 // 题目：请实现函数ComplexListNode* Clone(ComplexListNode* pHead)，复
+
 // 制一个复杂链表。在复杂链表中，每个结点除了有一个m_pNext指针指向下一个
+
 // 结点外，还有一个m_pSibling 指向链表中的任意结点或者nullptr。
 
+
+```c++
 
 ComplexList.h
 
@@ -1488,5 +1544,5 @@ void Test1()
 
     Test("Test1", pNode1);
 }
-
+```
 
