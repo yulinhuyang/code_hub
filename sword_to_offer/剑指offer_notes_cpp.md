@@ -1,10 +1,11 @@
 
 源码： https://github.com/zhedahht/CodingInterviewChinese2
 
-##1  Utilities
+## 1  Utilities
 
 ### Array
 
+```c++
 Array.h
 
 #pragma once
@@ -57,7 +58,11 @@ int Partition(int data[], int length, int start, int end)
     return small;
 }
 
+```
+
 ### list
+
+```c++
 
 list.h
 
@@ -189,8 +194,12 @@ void RemoveNode(ListNode** pHead, int value)
         pToBeDeleted = nullptr;
     }
 }
+```
+
 
 ### string
+
+```c++
 
 StringUtil.h
 
@@ -215,7 +224,11 @@ void Reverse(char *pBegin, char *pEnd)
     }
 }
 
+```
+
 ### Tree
+
+```c++
 
 Tree.h
 
@@ -308,9 +321,11 @@ void DestroyTree(TreeNode* pRoot)
         delete pRoot;
     }
 }
-
+```
 
 ### BinaryTree
+
+```c++
 
 BinaryTree.h
 
@@ -406,7 +421,7 @@ void DestroyTree(BinaryTreeNode* pRoot)
         DestroyTree(pRight);
     }
 }
-
+```
 
 
 ## 2  题目
@@ -417,7 +432,7 @@ void DestroyTree(BinaryTreeNode* pRoot)
 
 // 题目：设计一个类，我们只能生成该类的一个实例。
 
-
+```c++
 using System;
 
 namespace _02_Singleton
@@ -556,15 +571,21 @@ namespace _02_Singleton
         }
     }
 }
+```
 
 
 ### 03_01_DuplicationInArray
 
 // 面试题3（一）：找出数组中重复的数字
+
 // 题目：在一个长度为n的数组里的所有数字都在0到n-1的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，
+
 // 也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。例如，如果输入长度为7的数组{2, 3, 1, 0, 2, 5, 3}，
+
 // 那么对应的输出是重复的数字2或者3。
 
+
+```c++
 #include <cstdio>
 
 // 参数:
@@ -616,16 +637,23 @@ bool contains(int array[], int length, int number)
 
     return false;
 }
+```
 
 
 ### 03_02_DuplicationInArrayNoEdit
 
 // 面试题3（二）：不修改数组找出重复的数字
+
 // 题目：在一个长度为n+1的数组里的所有数字都在1到n的范围内，所以数组中至
+
 // 少有一个数字是重复的。请找出数组中任意一个重复的数字，但不能修改输入的
+
 // 数组。例如，如果输入长度为8的数组{2, 3, 5, 4, 3, 2, 6, 7}，那么对应的
+
 // 输出是重复的数字2或者3。
 
+
+```c++
 #include <iostream>
 
 int countRange(const int* numbers, int length, int start, int end);
@@ -674,25 +702,21 @@ int countRange(const int* numbers, int length, int start, int end)
             ++count;
     return count;
 }
-
+```
 
 ### 04_FindInPartiallySortedMatrix
 
 
 // 面试题4：二维数组中的查找
+
 // 题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按
+
 // 照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个
+
 // 整数，判断数组中是否含有该整数。
 
-//==================================================================
-// 《剑指Offer——名企面试官精讲典型编程题》代码
-// 作者：何海涛
-//==================================================================
 
-// 面试题4：二维数组中的查找
-// 题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按
-// 照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个
-// 整数，判断数组中是否含有该整数。
+```c++
 
 #include <cstdio>
 
@@ -733,14 +757,20 @@ void Test(char* testName, int* matrix, int rows, int columns, int number, bool e
     else
         printf("Failed.\n");
 }
+```
+
+
 
 ### 05_ReplaceSpaces
 
 // 面试题5：替换空格
+
 // 题目：请实现一个函数，把字符串中的每个空格替换成"%20"。例如输入“We are happy.”，
+
 // 则输出“We%20are%20happy.”。
 
 
+```c++
 #include <cstdio>
 #include <cstring>
 
@@ -823,11 +853,17 @@ void Test2()
     char str[length] = " helloworld";
     Test("Test2", str, length, "%20helloworld");
 }
+```
+
 
 ### 06_PrintListInReversedOrder
 
 // 面试题6：从尾到头打印链表
+
 // 题目：输入一个链表的头结点，从尾到头反过来打印出每个结点的值。
+
+
+```c++
 
 #include "..\Utilities\List.h"
 #include <stack>
@@ -893,14 +929,23 @@ void Test1()
 
     DestroyList(pNode1);
 }
+```
+
 
 ### 07_ConstructBinaryTree
 
 // 面试题7：重建二叉树
+
 // 题目：输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输
+
 // 入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,
+
 // 2, 4, 7, 3, 5, 6, 8}和中序遍历序列{4, 7, 2, 1, 5, 3, 8, 6}，则重建出
+
 // 图2.6所示的二叉树并输出它的头结点。
+
+
+```c++
 
 #include "..\Utilities\BinaryTree.h"
 #include <exception>
@@ -1101,3 +1146,4 @@ int main(int argc, char* argv[])
     return 0;
 }
 
+```
