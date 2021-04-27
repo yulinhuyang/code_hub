@@ -818,7 +818,7 @@ for 0 <= i < len(s):
     更新答案
 ```
 
-实现
+#### 实现
 
 要传入两个指针 `l` 和 `r` 呢？**因为这样实现可以同时处理回文串长度为奇数和偶数的情况**：
 
@@ -848,6 +848,408 @@ string longestPalindrome(string s) {
     return res;
 }
 ```
+
+#### 其他语言实现
+
+[5.最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring)
+
+**java**
+
+[cchromt](https://github.com/cchroot) 提供 Java 代码：
+
+```java
+// 中心扩展算法
+class Solution {
+    public String longestPalindrome(String s) {
+        // 如果字符串长度小于2，则直接返回其本身
+        if (s.length() < 2) {
+            return s;
+        }
+        String res = "";
+        for (int i = 0; i < s.length() - 1; i++) {
+            // 以 s.charAt(i) 为中心的最长回文子串
+            String s1 = palindrome(s, i, i);
+            // 以 s.charAt(i) 和 s.charAt(i+1) 为中心的最长回文子串
+            String s2 = palindrome(s, i, i + 1);
+            res = res.length() > s1.length() ? res : s1;
+            res = res.length() > s2.length() ? res : s2;
+        }
+        return res;
+    }
+
+    public String palindrome(String s, int left, int right) {
+        // 索引未越界的情况下，s.charAt(left) == s.charAt(right) 则继续向两边拓展
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        // 这里要注意，跳出 while 循环时，恰好满足 s.charAt(i) != s.charAt(j)，因此截取的的字符串为[left+1, right-1]
+        return s.substring(left + 1, right);
+    }
+}
+```
+
+
+[enrilwang](https://github.com/enrilwang) 提供 Python 代码：
+
+```python
+# 中心扩展算法
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        #用n来装字符串长度，res来装答案
+        n = len(s)  
+        res = str()
+        #字符串长度小于2，就返回本身
+        if n < 2: return s
+        for i in range(n-1):
+            #oddstr是以i为中心的最长回文子串
+            oddstr = self.centerExtend(s,i,i)
+            #evenstr是以i和i+1为中心的最长回文子串
+            evenstr = self.centerExtend(s,i,i+1)
+            temp = oddstr if len(oddstr)>len(evenstr) else evenstr
+            if len(temp)>len(res):res=temp
+        
+        return res
+
+    def centerExtend(self,s:str,left,right)->str:
+        
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        #这里要注意，跳出while循环时，恰好s[left] != s[right]
+        return s[left+1:right]
+
+
+```
+
+
+### 如何k个一组反转链表
+
+25.K个一组翻转链表
+
+给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。
+
+k 是一个正整数，它的值小于或等于链表的长度。
+
+如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。
+
+进阶：
+
+你可以设计一个只使用常数额外空间的算法来解决此问题吗？
+你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
+
+
+#### 实现
+
+```java
+ListNode reverseKGroup(ListNode head, int k) {
+    if (head == null) return null;
+    // 区间 [a, b) 包含 k 个待反转元素
+    ListNode a, b;
+    a = b = head;
+    for (int i = 0; i < k; i++) {
+        // 不足 k 个，不需要反转，base case
+        if (b == null) return head;
+        b = b.next;
+    }
+    // 反转前 k 个元素
+    ListNode newHead = reverse(a, b);
+    // 递归反转后续链表并连接起来
+    a.next = reverseKGroup(b, k);
+    return newHead;
+}
+```
+
+
+### 如何判定括号合法性
+
+题目很简单，输入一个字符串，其中包含 [](){} 六种括号，请你判断这个字符串组成的括号是否合法。
+
+Input: "()[]{}"
+Output: true
+
+Input: "([)]"
+Output: false
+
+Input: "{[]}"
+Output: true
+
+#### 实现
+
+栈是一种先进后出的数据结构，处理括号问题的时候尤其有用。
+
+我们这道题就用一个名为 `left` 的栈代替之前思路中的 `left` 变量，**遇到左括号就入栈，遇到右括号就去栈中寻找最近的左括号，看是否匹配**。
+
+```cpp
+bool isValid(string str) {
+    stack<char> left;
+    for (char c : str) {
+        if (c == '(' || c == '{' || c == '[')
+            left.push(c);
+        else // 字符 c 是右括号
+            if (!left.empty() && leftOf(c) == left.top())
+                left.pop();
+            else
+                // 和最近的左括号不匹配
+                return false;
+    }
+    // 是否所有的左括号都被匹配了
+    return left.empty();
+}
+
+char leftOf(char c) {
+    if (c == '}') return '{';
+    if (c == ')') return '(';
+    return '[';
+}
+```
+
+#### 其他语言实现
+
+[20.有效的括号](https://leetcode-cn.com/problems/valid-parentheses)
+
+##### python
+```python
+def isValid(self, s: str) -> bool:
+    left = []
+    leftOf = {
+        ')':'(',
+        ']':'[',
+        '}':'{'
+    }
+    for c in s:
+        if c in '([{':
+            left.append(c)
+        elif left and leftOf[c]==left[-1]: # 右括号 + left不为空 + 和最近左括号能匹配
+            left.pop()
+        else: # 右括号 + （left为空 / 和堆顶括号不匹配）
+            return False
+        
+    # left中所有左括号都被匹配则return True 反之False
+    return not left
+```
+
+
+
+##### java
+
+```java
+//基本思想：每次遇到左括号时都将相对应的右括号'）'，']'或'}'推入堆栈
+//如果在字符串中出现右括号，则需要检查堆栈是否为空，以及顶部元素是否与该右括号相同。如果不是，则该字符串无效。
+//最后，我们还需要检查堆栈是否为空
+public boolean isValid(String s) {
+  Deque<Character> stack = new ArrayDeque<>();
+  for(char c : s.toCharArray()){
+    //是左括号就将相对应的右括号入栈
+    if(c=='(') {
+      stack.offerLast(')');
+    }else if(c=='{'){
+      stack.offerLast('}');
+    }else if(c=='['){
+      stack.offerLast(']');   
+    }else if(stack.isEmpty() || stack.pollLast()!=c){//出现右括号，检查堆栈是否为空，以及顶部元素是否与该右括号相同
+      return false;
+    }
+  }
+  return stack.isEmpty();
+}
+
+
+```
+
+### 如何寻找消失的元素
+
+448. 找到所有数组中消失的数字
+
+给定一个范围在  1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。
+
+找到所有在 [1, n] 范围之间没有出现在数组中的数字。
+
+您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。
+
+示例:
+
+输入:
+[4,3,2,7,8,2,3,1]
+
+输出:
+[5,6]
+
+
+#### 实现
+
+刚才我们的思路是把两个和都加出来然后相减，为了避免溢出，干脆一边求和一边减算了。很类似刚才位运算解法的思路，仍然假设 `nums = [0,3,1,4]`，先补一位索引再让元素跟索引配对：
+
+![](../pictures/缺失元素/xor.png)
+
+
+我们让每个索引减去其对应的元素，再把相减的结果加起来，不就是那个缺失的元素吗？
+
+```java
+public int missingNumber(int[] nums) {
+    int n = nums.length;
+    int res = 0;
+    // 新补的索引
+    res += n - 0;
+    // 剩下索引和元素的差加起来
+    for (int i = 0; i < n; i++) 
+        res += i - nums[i];
+    return res;
+}
+```
+
+#### 其他语言实现
+
+##### python
+
+```python
+def missingNumber(self, nums: List[int]) -> int:
+    #思路1，位运算
+    res = len(nums)
+    for i,num in enumerate(nums):
+        res ^= i^num
+        return res
+```
+
+```python
+def missingNumber(self, nums: List[int]) -> int:
+    #思路2，求和
+    n = len(nums)
+    return n*(n+1)//2-sum(nums)
+```
+
+```python
+def missingNumber(self, nums: List[int]) -> int:
+    #思路3，防止整形溢出的优化
+    res = len(nums)
+    for i,num in enumerate(nums):
+        res+=i-num
+        return res
+```
+
+事实上，在python3中不存在整数溢出的问题（只要内存放得下），思路3的优化提升并不大，不过看上去有内味了哈...
+
+##### c++
+
+[happy-yuxuan](https://github.com/happy-yuxuan) 提供 三种方法的 C++ 代码：
+
+```c++
+// 方法：异或元素和索引
+int missingNumber(vector<int>& nums) {
+    int n = nums.size();
+    int res = 0;
+    // 先和新补的索引异或一下
+    res ^= n;
+    // 和其他的元素、索引做异或
+    for (int i = 0; i < n; i++)
+        res ^= i ^ nums[i];
+    return res;
+}
+```
+
+```c++
+// 方法：等差数列求和
+int missingNumber(vector<int>& nums) {
+    int n = nums.size();
+    // 公式：(首项 + 末项) * 项数 / 2
+    int expect = (0 + n) * (n + 1) / 2;
+    int sum = 0;
+    for (int x : nums) 
+        sum += x;
+    return expect - sum;
+}
+```
+
+```c++
+// 方法：防止整型溢出
+int missingNumber(vector<int>& nums) {
+    int n = nums.size();
+    int res = 0;
+    // 新补的索引
+    res += n - 0;
+    // 剩下索引和元素的差加起来
+    for (int i = 0; i < n; i++) 
+        res += i - nums[i];
+    return res;
+}
+```
+
+
+### 如何寻找缺失和重复的元素
+
+[645.错误的集合](https://leetcode-cn.com/problems/set-mismatch)
+
+这是 LeetCode 645 题，我来描述一下这个题目：
+
+给一个长度为 N 的数组 nums，其中本来装着 [1..N] 这 N 个元素，无序。但是现在出现了一些错误，nums 中的一个元素出现了重复，也就同时导致了另一个元素的缺失。请你写一个算法，找到 nums 中的重复元素和缺失元素的值。
+
+	// 返回两个数字，分别是 {dup, missing}
+	vector<int> findErrorNums(vector<int>& nums);
+	
+比如说输入：nums = [1,2,2,4]，算法返回 [2,3]。
+
+对于这种数组问题，**关键点在于元素和索引是成对儿出现的，常用的方法是排序、异或、映射**。
+
+映射的思路就是我们刚才的分析，将每个索引和元素映射起来，通过正负号记录某个元素是否被映射。
+
+排序的方法也很好理解，对于这个问题，可以想象如果元素都被从小到大排序，如果发现索引对应的元素如果不相符，就可以找到重复和缺失的元素。
+
+异或运算也是常用的，因为异或性质 `a ^ a = 0, a ^ 0 = a`，如果将索引和元素同时异或，就可以消除成对儿的索引和元素，留下的就是重复或者缺失的元素。可以看看前文「寻找缺失元素」，介绍过这种方法。
+
+
+#### 实现
+
+```cpp
+vector<int> findErrorNums(vector<int>& nums) {
+    int n = nums.size();
+    int dup = -1;
+    for (int i = 0; i < n; i++) {
+        // 现在的元素是从 1 开始的
+        int index = abs(nums[i]) - 1;
+        if (nums[index] < 0)
+            dup = abs(nums[i]);
+        else
+            nums[index] *= -1;
+    }
+
+    int missing = -1;
+    for (int i = 0; i < n; i++)
+        if (nums[i] > 0)
+            // 将索引转换成元素
+            missing = i + 1;
+    
+    return {dup, missing};
+}
+```
+
+#### 其他实现
+
+[zhuli](https://github.com/1097452462 "zhuli")提供的Java代码：
+```java
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        int n = nums.length;
+        int dup = -1;
+        for (int i = 0; i < n; i++) {
+	    // 元素是从 1 开始的
+            int index = Math.abs(nums[i]) - 1;
+            // nums[index] 小于 0 则说明重复访问
+            if (nums[index] < 0)
+                dup = Math.abs(nums[i]);
+            else
+                nums[index] *= -1;
+        }
+        int missing = -1;
+        for (int i = 0; i < n; i++)
+            // nums[i] 大于 0 则说明没有访问
+            if (nums[i] > 0)
+		// 将索引转换成元素
+                missing = i + 1;
+        return new int[]{dup, missing};
+    }
+}
+```
+
 
 
 
