@@ -1,6 +1,6 @@
 ## 第四章、高频面试系列
 
-### 如何实现LRU算法
+### 4.1 如何实现LRU算法
 
 计算机的缓存容量有限，如果缓存满了就要删除一些内容，给新内容腾位置。但问题是，删除哪些内容呢？我们肯定希望删掉哪些没什么用的缓存，而把有用的数据继续留在缓存里，方便之后继续使用。那么，什么样的数据，我们判定为「有用的」的数据呢？
 
@@ -335,7 +335,7 @@ class LRUCache:
 
 ```
 
-### 如何高效寻找素数
+### 4.2 如何高效寻找素数
 
 #### 设计
 
@@ -359,7 +359,9 @@ int countPrimes(int n) {
 
 
 
-#### C++实现
+#### 其他实现
+
+**C++实现**
 
 [204.计数质数](https://leetcode-cn.com/problems/count-primes)
 
@@ -396,7 +398,7 @@ class Solution {
 };
 ```
 
-###  二分查找应用
+### 4.3 二分查找应用
 
 [875.爱吃香蕉的珂珂](https://leetcode-cn.com/problems/koko-eating-bananas)
 
@@ -579,7 +581,7 @@ class Solution:
 ```
 
 
-### 如何高效解决接雨水问题
+### 4.4 如何高效解决接雨水问题
 
 [42.接雨水](https://leetcode-cn.com/problems/trapping-rain-water)
 
@@ -700,7 +702,7 @@ class Solution {
 ```
 
 
-### 如何去除有序数组的重复元素
+### 4.5 如何去除有序数组的重复元素
 
 #### 描述
 
@@ -795,7 +797,7 @@ def deleteDuplicates(self, head: ListNode) -> ListNode:
     return head
 ```
 
-### 如何寻找最长回文子串
+### 4.6 如何寻找最长回文子串
 
 [5.最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring)
 
@@ -923,7 +925,7 @@ class Solution:
 ```
 
 
-### 如何k个一组反转链表
+### 4.7 如何k个一组反转链表
 
 25.K个一组翻转链表
 
@@ -961,7 +963,7 @@ ListNode reverseKGroup(ListNode head, int k) {
 ```
 
 
-### 如何判定括号合法性
+### 4.8 如何判定括号合法性
 
 题目很简单，输入一个字符串，其中包含 [](){} 六种括号，请你判断这个字符串组成的括号是否合法。
 
@@ -1057,7 +1059,7 @@ public boolean isValid(String s) {
 
 ```
 
-### 如何寻找消失的元素
+### 4.9 如何寻找消失的元素
 
 448. 找到所有数组中消失的数字
 
@@ -1175,7 +1177,7 @@ int missingNumber(vector<int>& nums) {
 ```
 
 
-### 如何寻找缺失和重复的元素
+### 4.10 如何寻找缺失和重复的元素
 
 [645.错误的集合](https://leetcode-cn.com/problems/set-mismatch)
 
