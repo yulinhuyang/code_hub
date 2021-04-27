@@ -1,6 +1,6 @@
 ## 第二章、数据结构系列
 
-### 学习算法和刷题的思路指南
+### 1 学习算法和刷题的思路指南
 
 数据结构的基本操作
 
@@ -69,7 +69,7 @@ void traverse(TreeNode root) {
 
 N 叉树的遍历又可以扩展为图的遍历，因为图就是好几 N 叉棵树的结合体。你说图是可能出现环的？这个很好办，用个布尔数组 visited 做标记就行了，这里就不写代码了。
 
-### 二叉堆详解实现优先级队列
+### 2 二叉堆详解实现优先级队列
 
 因为，二叉堆其实就是一种特殊的二叉树（完全二叉树），只不过存储在数组里。一般的链表二叉树，我们操作节点的指针，而在数组里，我们把数组索引作为指针：
 
@@ -195,10 +195,13 @@ public Key delMax() {
 ```
 
 
-###  LRU算法
+###  3 LRU算法
 
 LRU 缓存淘汰算法就是一种常用策略。LRU 的全称是 Least Recently Used，也就是说我们认为最近使用过的数据应该是是「有用的」，很久都没用过的数据应该是无用的，内存满了就优先删那些很久没用过的数据。
 
+[146.LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/)
+
+#### 3.1 实现
 
 ```java
 class LRUCache {
@@ -244,11 +247,9 @@ class LRUCache {
 }
 ```
 
-#### 其他语言
+#### 3.2 其他语言实现
 
-[146.LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/)
-
-##### c++
+**c++**
 
 [gowufang](https://github.com/gowufang)提供第146题C++代码：
 ```cpp
@@ -338,7 +339,7 @@ class LRUCache {
 
 
 
-##### python
+**python**
 
 ```python
 """
@@ -374,9 +375,9 @@ class LRUCache:
 
 ```
 
-### 二叉搜索树操作集锦
+### 4 二叉搜索树操作集锦
 
-#### 设计思路
+#### 4.1 设计思路
 
 100.相同的树
 
@@ -514,7 +515,7 @@ TreeNode getMin(TreeNode node) {
 } 
 ```
 
-#### 其他语言
+#### 4.2 其他语言实现
 
 
 [100.相同的树](https://leetcode-cn.com/problems/same-tree)
@@ -527,7 +528,8 @@ TreeNode getMin(TreeNode node) {
 
 [98.验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree)
 
-#####  c++
+
+**c++实现**
 
 [dekunma](https://www.linkedin.com/in/dekun-ma-036a9b198/)提供第98题C++代码：
 
@@ -600,7 +602,7 @@ public:
 };
 ```
 
-##### python
+**python实现**
 
 [ChenjieXu](https://github.com/ChenjieXu)提供第98题Python3代码：
 
@@ -703,7 +705,9 @@ class Solution:
         return node
 ```
 
-##### java
+**java实现**
+
+
 ```
 /**
 * 第【98】题的扩展解法：
@@ -727,8 +731,21 @@ public boolean isValidBST(TreeNode root) {
 }
 ```
 
-###  特殊数据结构：单调栈
-#### 单调栈模板
+###  5 特殊数据结构：单调栈
+
+单调栈实际上就是栈，只是利用了一些巧妙的逻辑，使得每次新元素入栈后，栈内的元素都保持有序（单调递增或单调递减）。
+
+Next Greater Number 的原始问题，这是力扣第 496 题「下一个更大元素 I」：
+
+给你一个数组，返回一个等长的数组，对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1。
+
+函数签名如下：
+
+	vector<int> nextGreaterElement(vector<int>& nums);
+	比如说，输入一个数组 nums = [2,1,2,4,3]，你返回数组 [4,2,4,-1,-1]。
+
+
+#### 5.1 单调栈模板
 
 ```cpp
 vector<int> nextGreaterElement(vector<int>& nums) {
@@ -766,7 +783,7 @@ while (true) {
 ```
 
 
-#### 实现
+#### 5.2 实现
 
 ```java
 // 496.下一个更大元素
@@ -848,9 +865,30 @@ class Solution {
 }
 ```
 
-### 特殊数据结构：单调队列
+### 6 特殊数据结构：单调队列
 
-#### 单调队列模板
+239.滑动窗口最大值
+
+给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
+
+返回滑动窗口中的最大值。
+
+示例 1：
+
+	输入：nums = [1,3,-1,-3,5,3,6,7], k = 3
+	输出：[3,3,5,5,6,7]
+	解释：
+	滑动窗口的位置                最大值
+	---------------               -----
+	[1  3  -1] -3  5  3  6  7       3
+	 1 [3  -1  -3] 5  3  6  7       3
+	 1  3 [-1  -3  5] 3  6  7       5
+	 1  3  -1 [-3  5  3] 6  7       5
+	 1  3  -1  -3 [5  3  6] 7       6
+	 1  3  -1  -3  5 [3  6  7]      7
+
+
+#### 6.1 单调队列模板
 
 ```cpp
 class MonotonicQueue {
@@ -887,11 +925,10 @@ vector<int> maxSlidingWindow(vector<int>& nums, int k) {
 }
 ```
 
-[239.滑动窗口最大值](https://leetcode-cn.com/problems/sliding-window-maximum)
 
-#### 其他语言实现
+#### 6.2 其他语言实现
 
-##### python
+**python**
 
 由[SCUHZS](ttps://github.com/brucecat)提供
 
@@ -942,7 +979,7 @@ class Solution:
 
 ```
 
-##### java
+**java**
 
 
 ```java
@@ -1008,9 +1045,9 @@ class Solution {
 }
 ```
 
-### 设计Twitter
+### 7 设计Twitter
 
-
+355.设计推特
 
 #### 题目
 
@@ -1206,9 +1243,9 @@ public List<Integer> getNewsFeed(int userId) {
 ```
 
 
-#### 其他语言
+#### 7.2 其他语言实现
 
-##### C++
+**C++**
 
 [happy-yuxuan](https://github.com/happy-yuxuan) 提供 C++ 代码：
 
@@ -1329,7 +1366,7 @@ public:
 
 
 
-##### python
+**python**
 
 ```python
 import heapq
@@ -1412,9 +1449,9 @@ class Twitter:
 ```
 
 
-### 递归反转链表的一部分
+### 8 递归反转链表的一部分
 
-#### 递归反转整个链表
+#### 8.1 递归反转整个链表
 
 ```java
 ListNode reverse(ListNode head) {
@@ -1426,7 +1463,7 @@ ListNode reverse(ListNode head) {
 }
 ```
 
-#### 反转链表前 N 个节点
+#### 8.2 反转链表前 N 个节点
 
 ```java
 ListNode successor = null; // 后驱节点
@@ -1448,7 +1485,7 @@ ListNode reverseN(ListNode head, int n) {
 }    
 ```
 
-####  反转链表的一部分
+#### 8.3 反转链表的一部分
 
 ```java
 ListNode reverseBetween(ListNode head, int m, int n) {
@@ -1462,10 +1499,10 @@ ListNode reverseBetween(ListNode head, int m, int n) {
 }
 ```
 
-#### 其他语言实现
+#### 8.4 其他语言实现
 
 
-##### c++
+**c++** 
 
 [shilei](https://github.com/ShileiGuo) 提供C++解法代码:
 
@@ -1512,7 +1549,8 @@ public:
 };
 ```
 
-##### python
+**python**
+
 [DiamondI](https://github.com/DiamondI) 提供python3版本代码：
 
 思路：递归。时间复杂度为O(n)，由于递归调用需要借助栈的空间，因此空间复杂度亦为O(n)。
