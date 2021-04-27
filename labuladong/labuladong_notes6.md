@@ -1,6 +1,6 @@
 ## 第四章、高频面试系列
 
-### 4.1 如何实现LRU算法
+### 1 如何实现LRU算法
 
 计算机的缓存容量有限，如果缓存满了就要删除一些内容，给新内容腾位置。但问题是，删除哪些内容呢？我们肯定希望删掉哪些没什么用的缓存，而把有用的数据继续留在缓存里，方便之后继续使用。那么，什么样的数据，我们判定为「有用的」的数据呢？
 
@@ -13,6 +13,9 @@ LRU 缓存淘汰算法就是一种常用策略。LRU 的全称是 Least Recently
 2、我们要在 `cache` 中快速找某个 `key` 是否已存在并得到对应的 `val`；
 
 3、每次访问 `cache` 中的某个 `key`，需要将这个元素变为最近使用的，也就是说 `cache` 要支持在任意位置快速插入和删除元素。
+
+
+#### 1.1 实现
 
 ```java
 class Node {
@@ -158,7 +161,7 @@ public void put(int key, int val) {
 }
 ```
 
-#### 用 Java 的内置类型 `LinkedHashMap` 来实现 LRU 算法
+#### 1.2 用 Java 的内置类型 `LinkedHashMap` 来实现 LRU 算法
 
 
 ```java
@@ -205,11 +208,11 @@ class LRUCache {
 }
 ```
 
-#### 其他语言实现
+#### 1.3 其他语言实现
 
 [146.LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/)
 
-##### c++
+**c++**
 
 [gowufang](https://github.com/gowufang)提供第146题C++代码：
 ```cpp
@@ -299,7 +302,7 @@ class LRUCache {
 
 
 
-##### python
+**python**
 
 ```python
 """
@@ -335,9 +338,9 @@ class LRUCache:
 
 ```
 
-### 4.2 如何高效寻找素数
+### 2 如何高效寻找素数
 
-#### 设计
+#### 2.1 设计
 
 ```java
 int countPrimes(int n) {
@@ -359,16 +362,27 @@ int countPrimes(int n) {
 
 
 
-#### 其他实现
+#### 2.2 其他实现
 
 **C++实现**
 
 [204.计数质数](https://leetcode-cn.com/problems/count-primes)
 
-采用的算法是埃拉托斯特尼筛法
-埃拉托斯特尼筛法的具体内容就是：**要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的倍数剔除，剩下的就是素数。**
-同时考虑到大于2的偶数都不是素数，所以可以进一步优化成：**要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的奇数倍剔除，剩下的奇数就是素数。**
-此算法其实就是上面的Java解法所采用的。
+统计所有小于非负整数 n 的质数的数量。
+
+ 
+
+	示例 1：
+
+	输入：n = 10
+	输出：4
+	解释：小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。
+
+
+	采用的算法是埃拉托斯特尼筛法
+	埃拉托斯特尼筛法的具体内容就是：**要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的倍数剔除，剩下的就是素数。**
+	同时考虑到大于2的偶数都不是素数，所以可以进一步优化成：**要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的奇数倍剔除，剩下的奇数就是素数。**
+	此算法其实就是上面的Java解法所采用的。
 
 这里提供C++的代码：
 ```C++
@@ -398,14 +412,46 @@ class Solution {
 };
 ```
 
-### 4.3 二分查找应用
+### 3 二分查找应用
 
 [875.爱吃香蕉的珂珂](https://leetcode-cn.com/problems/koko-eating-bananas)
 
+珂珂喜欢吃香蕉。这里有 N 堆香蕉，第 i 堆中有 piles[i] 根香蕉。警卫已经离开了，将在 H 小时后回来。
+
+珂珂可以决定她吃香蕉的速度 K （单位：根/小时）。每个小时，她将会选择一堆香蕉，从中吃掉 K 根。如果这堆香蕉少于 K 根，她将吃掉这堆的所有香蕉，然后这一小时内不会再吃更多的香蕉。  
+
+珂珂喜欢慢慢吃，但仍然想在警卫回来前吃掉所有的香蕉。
+
+返回她可以在 H 小时内吃掉所有香蕉的最小速度 K（K 为整数）。
+
+
+	示例 1：
+
+	输入: piles = [3,6,7,11], H = 8
+	输出: 4
+
+
 [1011.在D天内送达包裹的能力](https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days)
 
+传送带上的包裹必须在 D 天内从一个港口运送到另一个港口。
 
-#### koko偷香蕉
+传送带上的第 i 个包裹的重量为 weights[i]。每一天，我们都会按给出重量的顺序往传送带上装载包裹。我们装载的重量不会超过船的最大运载重量。
+
+返回能在 D 天内将传送带上的所有包裹送达的船的最低运载能力。
+
+示例 2：
+
+输入：weights = [3,2,2,4,1,4], D = 3
+输出：6
+解释：
+船舶最低载重 6 就能够在 3 天内送达所有包裹，如下所示：
+第 1 天：3, 2
+第 2 天：2, 4
+第 3 天：1, 4
+
+ 
+
+#### 3.1  koko偷香蕉
 
 珂珂喜欢吃香蕉。这里有 N 堆香蕉，第 i 堆中有 piles[i] 根香蕉。警卫已经离开了，将在 H 小时后回来。
 
@@ -460,7 +506,7 @@ int getMax(int[] piles) {
 ```
 
 
-#### 运输问题：
+#### 3.2 运输问题：
 
 要在 `D` 天内运输完所有货物，货物不可分割，如何确定运输的最小载重呢（下文称为 `cap`）？
 
@@ -501,9 +547,10 @@ boolean canFinish(int[] w, int D, int cap) {
 }
 ```
 
-#### 其他语言实现
+#### 3.3 其他语言实现
 
-##### c++
+**c++**
+
 [cchroot](https://github.com/cchroot) 提供 C++ 代码：
 
 ```c++
@@ -537,7 +584,8 @@ public:
 };
 ```
 
-##### python
+**python**
+
 [tonytang731](https://https://github.com/tonytang731) 提供 Python3 代码：
 
 ```python
@@ -581,11 +629,18 @@ class Solution:
 ```
 
 
-### 4.4 如何高效解决接雨水问题
+### 4 如何高效解决接雨水问题
 
 [42.接雨水](https://leetcode-cn.com/problems/trapping-rain-water)
 
-#### 暴力
+给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+
+
+输入：height = [0,1,0,2,1,0,1,3,2,1,2,1]
+输出：6
+解释：上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 
+ 
+#### 4.1 暴力
 
 ```cpp
 int trap(vector<int>& height) {
@@ -608,7 +663,7 @@ int trap(vector<int>& height) {
 ```
 
 
-#### 备忘录优化
+#### 4.2 备忘录优化
 
 
 ```cpp
@@ -634,7 +689,7 @@ int trap(vector<int>& height) {
 }
 ```
 
-#### 双指针解法
+#### 4.3 双指针解法
 
 ```cpp
 int trap(vector<int>& height) {
@@ -663,7 +718,7 @@ int trap(vector<int>& height) {
 }
 ```
 
-#### 其他语言
+#### 4.4 其他语言
 
 
 [Yifan Zhang](https://github.com/FanFan0919) 提供 java 代码
@@ -702,9 +757,9 @@ class Solution {
 ```
 
 
-### 4.5 如何去除有序数组的重复元素
+### 5 如何去除有序数组的重复元素
 
-#### 描述
+#### 5.1 描述
 
 **对于数组相关的算法问题，有一个通用的技巧：要尽量避免在中间删除元素，那我就先想办法把这个元素换到最后去**。这样的话，最终待删除的元素都拖在数组尾部，一个一个 pop 掉就行了，每次操作的时间复杂度也就降低到 O(1) 了。
 
@@ -753,7 +808,7 @@ ListNode deleteDuplicates(ListNode head) {
 ```
 
 
-##### python实现
+##### 5.2 python实现
 
 [eric wang](https://www.github.com/eric496) 提供有序数组 Python3 代码 
 
@@ -797,9 +852,19 @@ def deleteDuplicates(self, head: ListNode) -> ListNode:
     return head
 ```
 
-### 4.6 如何寻找最长回文子串
+### 6 如何寻找最长回文子串
 
 [5.最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring)
+
+给你一个字符串 s，找到 s 中最长的回文子串。
+
+	示例 1：
+
+	输入：s = "babad"
+	输出："bab"
+	解释："aba" 同样是符合题意的答案。
+
+
 
 下面，就来说一下正确的思路，如何使用双指针。
 
@@ -820,7 +885,7 @@ for 0 <= i < len(s):
     更新答案
 ```
 
-#### 实现
+#### 6.1 实现
 
 要传入两个指针 `l` 和 `r` 呢？**因为这样实现可以同时处理回文串长度为奇数和偶数的情况**：
 
@@ -851,7 +916,7 @@ string longestPalindrome(string s) {
 }
 ```
 
-#### 其他语言实现
+#### 6.2 其他语言实现
 
 [5.最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring)
 
@@ -925,7 +990,7 @@ class Solution:
 ```
 
 
-### 4.7 如何k个一组反转链表
+### 7  如何k个一组反转链表
 
 25.K个一组翻转链表
 
@@ -941,7 +1006,7 @@ k 是一个正整数，它的值小于或等于链表的长度。
 你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
 
 
-#### 实现
+#### 7.1 实现
 
 ```java
 ListNode reverseKGroup(ListNode head, int k) {
@@ -963,7 +1028,7 @@ ListNode reverseKGroup(ListNode head, int k) {
 ```
 
 
-### 4.8 如何判定括号合法性
+### 8 如何判定括号合法性
 
 题目很简单，输入一个字符串，其中包含 [](){} 六种括号，请你判断这个字符串组成的括号是否合法。
 
@@ -976,7 +1041,7 @@ Output: false
 Input: "{[]}"
 Output: true
 
-#### 实现
+#### 8.1 实现
 
 栈是一种先进后出的数据结构，处理括号问题的时候尤其有用。
 
@@ -1006,11 +1071,12 @@ char leftOf(char c) {
 }
 ```
 
-#### 其他语言实现
+#### 8.2 其他语言实现
 
 [20.有效的括号](https://leetcode-cn.com/problems/valid-parentheses)
 
-##### python
+**python**
+
 ```python
 def isValid(self, s: str) -> bool:
     left = []
@@ -1033,7 +1099,7 @@ def isValid(self, s: str) -> bool:
 
 
 
-##### java
+**java**
 
 ```java
 //基本思想：每次遇到左括号时都将相对应的右括号'）'，']'或'}'推入堆栈
@@ -1059,7 +1125,7 @@ public boolean isValid(String s) {
 
 ```
 
-### 4.9 如何寻找消失的元素
+### 9 如何寻找消失的元素
 
 448. 找到所有数组中消失的数字
 
@@ -1078,11 +1144,9 @@ public boolean isValid(String s) {
 [5,6]
 
 
-#### 实现
+#### 9.1 实现
 
 刚才我们的思路是把两个和都加出来然后相减，为了避免溢出，干脆一边求和一边减算了。很类似刚才位运算解法的思路，仍然假设 `nums = [0,3,1,4]`，先补一位索引再让元素跟索引配对：
-
-![](../pictures/缺失元素/xor.png)
 
 
 我们让每个索引减去其对应的元素，再把相减的结果加起来，不就是那个缺失的元素吗？
@@ -1100,9 +1164,9 @@ public int missingNumber(int[] nums) {
 }
 ```
 
-#### 其他语言实现
+#### 9.1 其他语言实现
 
-##### python
+**python**
 
 ```python
 def missingNumber(self, nums: List[int]) -> int:
@@ -1131,7 +1195,7 @@ def missingNumber(self, nums: List[int]) -> int:
 
 事实上，在python3中不存在整数溢出的问题（只要内存放得下），思路3的优化提升并不大，不过看上去有内味了哈...
 
-##### c++
+**c++**
 
 [happy-yuxuan](https://github.com/happy-yuxuan) 提供 三种方法的 C++ 代码：
 
@@ -1177,11 +1241,10 @@ int missingNumber(vector<int>& nums) {
 ```
 
 
-### 4.10 如何寻找缺失和重复的元素
+### 10 如何寻找缺失和重复的元素
 
 [645.错误的集合](https://leetcode-cn.com/problems/set-mismatch)
 
-这是 LeetCode 645 题，我来描述一下这个题目：
 
 给一个长度为 N 的数组 nums，其中本来装着 [1..N] 这 N 个元素，无序。但是现在出现了一些错误，nums 中的一个元素出现了重复，也就同时导致了另一个元素的缺失。请你写一个算法，找到 nums 中的重复元素和缺失元素的值。
 
@@ -1199,7 +1262,7 @@ int missingNumber(vector<int>& nums) {
 异或运算也是常用的，因为异或性质 `a ^ a = 0, a ^ 0 = a`，如果将索引和元素同时异或，就可以消除成对儿的索引和元素，留下的就是重复或者缺失的元素。可以看看前文「寻找缺失元素」，介绍过这种方法。
 
 
-#### 实现
+#### 10.1 实现
 
 ```cpp
 vector<int> findErrorNums(vector<int>& nums) {
@@ -1224,7 +1287,7 @@ vector<int> findErrorNums(vector<int>& nums) {
 }
 ```
 
-#### 其他实现
+#### 10.2 其他实现
 
 [zhuli](https://github.com/1097452462 "zhuli")提供的Java代码：
 ```java
