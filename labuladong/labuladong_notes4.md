@@ -1,12 +1,34 @@
 ## 第三章 算法思维系列
 
-### 回溯算法详解
+### 1 回溯算法详解
 
-#### 题目
+#### 1.1 题目
 
 [46.全排列](https://leetcode-cn.com/problems/permutations)
 
+给定一个 没有重复 数字的序列，返回其所有可能的全排列。
+
+示例:
+
+    输入: [1,2,3]
+    输出:
+    [
+      [1,2,3],
+      [1,3,2],
+      [2,1,3],
+      [2,3,1],
+      [3,1,2],
+      [3,2,1]
+    ]
+
 [51.N皇后](https://leetcode-cn.com/problems/n-queens)
+
+n 皇后问题 研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
+
+给你一个整数 n ，返回所有不同的 n 皇后问题 的解决方案。
+
+每一种解法包含一个不同的 n 皇后问题 的棋子放置方案，该方案中 'Q' 和 '.' 分别代表了皇后和空位。
+
 
 代码方面，回溯算法的框架：
 
@@ -21,7 +43,7 @@ for 选择 in 选择列表:
     将该选择再加入选择列表
 ```
 
-#### 全排列问题
+#### 1.2 全排列问题
 
 
 **我们只要在递归之前做出选择，在递归之后撤销刚才的选择**，就能正确得到每个节点的选择列表和路径。
@@ -64,7 +86,7 @@ void backtrack(int[] nums, LinkedList<Integer> track) {
 ```
 
 
-#### N 皇后问题
+#### 1.3 N 皇后问题
 
 给你一个 N×N 的棋盘，让你放置 N 个皇后，使得它们不能互相攻击。
 
@@ -165,7 +187,7 @@ bool backtrack(vector<string>& board, int row) {
 ```
 
 
-#### 其他语言实现
+#### 1.4 其他语言实现
 
 
 [46.全排列](https://leetcode-cn.com/problems/permutations)
@@ -205,9 +227,20 @@ void backtrack(int[] nums, LinkedList<Integer> track) {
 }
 ```
 
-### 回溯算法团灭子集、排列、组合问题
+### 2 回溯算法团灭子集、排列、组合问题
 
-#### 子集
+#### 2.1 子集
+
+给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。
+
+解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。
+
+
+    示例 1：
+
+    输入：nums = [1,2,3]
+    输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
 
 ```cpp
 vector<vector<int>> res;
@@ -232,7 +265,7 @@ void backtrack(vector<int>& nums, int start, vector<int>& track) {
 }
 ```
 
-#### 组合
+#### 2.2 组合
 
 输入两个数字 `n, k`，算法输出 `[1..n]` 中 k 个数字的所有组合。
 
@@ -280,7 +313,7 @@ void backtrack(int n, int k, int start, vector<int>& track) {
 }
 ```
 
-#### 排列
+#### 2.3 排列
 
 输入一个**不包含重复数字**的数组 `nums`，返回这些数字的全部排列。
 
@@ -331,7 +364,7 @@ void backtrack(int[] nums, LinkedList<Integer> track) {
 }
 ```
 
-#### 其他实现
+#### 2.4 其他实现
 
 [userLF](https://github.com/userLF)提供全排列的java代码：
 
@@ -372,10 +405,10 @@ class Solution {
 ```
 
 
-### 二分查找详解
+### 3 二分查找详解
 
 
-#### 零、二分查找框架
+#### 3.1 二分查找框架
 
 ```java
 int binarySearch(int[] nums, int target) {
@@ -395,7 +428,7 @@ int binarySearch(int[] nums, int target) {
 }
 ```
 
-#### 寻找一个数（基本的二分搜索）
+#### 3.2 寻找一个数（基本的二分搜索）
 
 ```java
 int binarySearch(int[] nums, int target) {
@@ -415,7 +448,7 @@ int binarySearch(int[] nums, int target) {
 }
 ```
 
-#### 寻找左侧边界的二分搜索
+#### 3.3 寻找左侧边界的二分搜索
 
 以下是最常见的代码形式，其中的标记是需要注意的细节：
 
@@ -439,7 +472,7 @@ int left_bound(int[] nums, int target) {
 }
 ```
 
-#### 寻找右侧边界的二分查找
+#### 3.4 寻找右侧边界的二分查找
 
 类似寻找左侧边界的算法，这里也会提供两种写法，还是先写常见的左闭右开的写法，只有两处和搜索左侧边界不同，已标注：
 
@@ -463,7 +496,7 @@ int right_bound(int[] nums, int target) {
 ```
 
 
-#### 逻辑统一
+#### 3.5 逻辑统一
 
 ```java
 int binary_search(int[] nums, int target) {
@@ -523,10 +556,9 @@ int right_bound(int[] nums, int target) {
 }
 ```
 
-#### 其他语言实现
+#### 3.6 其他语言实现
 
-
-##### python
+**python**
 
 [MarineJoker](https://github.com/MarineJoker) 提供 Python3 代码  
 
@@ -625,21 +657,71 @@ def right_bound(nums, target):
 
 
 
-### 双指针技巧总结
+### 4 双指针技巧总结
 
-#### 滑动窗口技巧
+#### 4.1 滑动窗口技巧
 
 [76.最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring)
 
+给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串 "" 。
+
+注意：如果 s 中存在这样的子串，我们保证它是唯一的答案。
+
+
+    示例 1：
+
+    输入：s = "ADOBECODEBANC", t = "ABC"
+    输出："BANC"
+
+
+
 [567.字符串的排列](https://leetcode-cn.com/problems/permutation-in-string)
+
+给定两个字符串 s1 和 s2，写一个函数来判断 s2 是否包含 s1 的排列。
+
+换句话说，第一个字符串的排列之一是第二个字符串的 子串 。
+
+
+    示例 1：
+
+    输入: s1 = "ab" s2 = "eidbaooo"
+    输出: True
+    解释: s2 包含 s1 的排列之一 ("ba").
+
 
 [438.找到字符串中所有字母异位词](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string)
 
+给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。
+
+字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。
+
+    说明：
+
+    字母异位词指字母相同，但排列不同的字符串。
+    不考虑答案输出的顺序。
+    示例 1:
+
+    输入:
+    s: "cbaebabacd" p: "abc"
+
+    输出:
+    [0, 6]
+
+    解释:
+    起始索引等于 0 的子串是 "cba", 它是 "abc" 的字母异位词。
+
+
 [3.无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters)
 
+给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 
+    示例 1:
 
-#### 1 最小覆盖子串
+    输入: s = "abcabcbb"
+    输出: 3 
+    解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+
+#### 4.2 最小覆盖子串
 
 ```cpp
 string minWindow(string s, string t) {
@@ -682,7 +764,7 @@ string minWindow(string s, string t) {
 }
 ```
 
-####  2 找到字符串中所有字母异位词
+#### 4.3 找到字符串中所有字母异位词
 
 ```cpp
 vector<int> findAnagrams(string s, string t) {
@@ -721,7 +803,7 @@ vector<int> findAnagrams(string s, string t) {
     return res;
 }
 ```
-#### 3 无重复字符的最长子串
+#### 4.4 无重复字符的最长子串
 
 类似之前的思路，使用 window 作为计数器记录窗口中的字符出现次数，然后先向右移动 right，当 window 中出现重复字符时，开始移动 left 缩小窗口，如此往复：
 
@@ -747,7 +829,7 @@ int lengthOfLongestSubstring(string s) {
     return res;
 }
 ```
-####  其他语言实现
+#### 4.5 其他语言实现
 
 
 [Jiajun](https://github.com/liujiajun) 提供最小覆盖子串 Python3 代码：
@@ -790,14 +872,27 @@ class Solution:
 ```
 
 
-### twoSum问题的核心思想
+### 5 twoSum问题的核心思想
+
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。
+
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+
+你可以按任意顺序返回答案。
+
+ 
+示例 1：
+
+输入：nums = [2,7,11,15], target = 9
+输出：[0,1]
+解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
 
 
 [1.两数之和](https://leetcode-cn.com/problems/two-sum)
 
 [170.两数之和 III - 数据结构设计](https://leetcode-cn.com/problems/two-sum-iii-data-structure-design)
 
-#### TwoSum I
+#### 5.1 TwoSum I
 
 这个问题的**最基本形式**是这样：给你一个数组和一个整数 `target`，可以保证数组中**存在**两个数的和为 `target`，请你返回这两个数的索引。
 
@@ -841,7 +936,7 @@ int[] twoSum(int[] nums, int target) {
 }
 ```
 
-#### TwoSum II
+#### 5.2 TwoSum II
 
 优化：借助**哈希集合**来针对性优化 `find` 方法
 
@@ -863,7 +958,7 @@ class TwoSum {
 }
 ```
 
-#### python实现
+#### 5.3 python实现
 
 由[JodyZ0203](https://github.com/JodyZ0203)提供 1. Two Sums Python3 解法代码:
 
@@ -891,9 +986,9 @@ class Solution:
 ```
 
 
-### 常用的位操作
+### 6 常用的位操作
 
-####  几个有趣的位操作
+#### 6.1 几个有趣的位操作
 
 1. **利用或操作 `|` 和空格将英文字符转换为小写**
 
@@ -1017,9 +1112,19 @@ int singleNumber(vector<int>& nums) {
 }
 ```
 
-### 烧饼排序
+### 7 烧饼排序
 
-#### 题目
+给你一个整数数组 arr ，请使用 煎饼翻转 完成对数组的排序。
+
+一次煎饼翻转的执行过程如下：
+
+选择一个整数 k ，1 <= k <= arr.length
+反转子数组 arr[0...k-1]（下标从 0 开始）
+例如，arr = [3,2,1,4] ，选择 k = 3 进行一次煎饼翻转，反转子数组 [3,2,1] ，得到 arr = [1,2,3,4] 。
+
+以数组形式返回能使 arr 有序的煎饼翻转操作所对应的 k 值序列。任何将数组排序且翻转次数在 10 * arr.length 范围内的有效答案都将被判断为正确。
+
+#### 7.1 题目
 
 烧饼排序是个很有意思的实际问题：假设盘子上有 `n` 块**面积大小不一**的烧饼，你如何用一把锅铲进行若干次翻转，让这些烧饼的大小有序（小的在上，大的在下）
 
@@ -1068,7 +1173,9 @@ void reverse(int[] arr, int i, int j) {
 ```
 
 
-#### python 实现
+#### 7.2 其他语言实现
+
+**python**
 
 [fengshuu](https://github.com/fengshuu) 提供 Python3 解法代码：
 
@@ -1109,7 +1216,7 @@ class Solution:
 ```
 
 
-### c++
+**c++**
 
 [fengshuu](https://github.com/fengshuu) 提供 C++ 解法代码：
 
@@ -1155,7 +1262,7 @@ private:
 };
 ```
 
-### java
+**java**
 
 [L-WEIWEI](https://github.com/L-WWEEII) 提供 第969题的 Java 代码：
 
