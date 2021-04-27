@@ -1,6 +1,6 @@
-#  第零章、必读系列
+##  第零章、必读系列
 
-## 1 动态规划解题框架
+### 1 动态规划解题框架
 
 
 **明确 base case -> 明确「状态」-> 明确「选择」 -> 定义 dp 数组/函数的含义**。
@@ -17,7 +17,7 @@ for 状态1 in 状态1的所有取值：
             dp[状态1][状态2][...] = 求最值(选择1，选择2...)
 ```            
             
-### 1.1 斐波那契数列
+#### 1.1 斐波那契数列
 
 **带备忘录的递归解法**
 
@@ -70,7 +70,7 @@ int fib(int n) {
 }
 ```
 
-### 1.2 凑零钱问题
+#### 1.2 凑零钱问题
 
 
 ```python
@@ -140,9 +140,9 @@ int coinChange(vector<int>& coins, int amount) {
 ```
 
 
-### 1.3 其他语言实现
+#### 1.3 其他语言实现
 
-#### python
+##### python
 
 [DapangLiu](https://github.com/DapangLiu) 提供 509. 斐波那契数 Python3 解法代码：
 
@@ -185,7 +185,7 @@ class Solution:
         return dp_0
 ```
 
-### dp 遍历方向
+#### dp 遍历方向
 
 dp 数组的遍历方向
 
@@ -218,7 +218,7 @@ for (int l = 2; l <= n; l++) {
 }
 ```
 
-## 2  回溯算法解题框架
+### 2  回溯算法解题框架
 
 ```python
 result = []
@@ -283,7 +283,7 @@ void backtrack(int[] nums, LinkedList<Integer> track) {
 }
 ```
 
-### 2.2  N 皇后问题
+#### 2.2  N 皇后问题
 
 给你一个 N×N 的棋盘，让你放置 N 个皇后，使得它们不能互相攻击。
 
@@ -373,7 +373,7 @@ bool backtrack(vector<string>& board, int row) {
 }
 ```
 
-### 2.3 其他语言
+#### 2.3 其他语言
 
 [46.全排列](https://leetcode-cn.com/problems/permutations)
 
@@ -477,9 +477,9 @@ class solution {
 }
 ```
 
-## 3  二分查找详解
+### 3  二分查找详解
 
-### 3.1 二分查找框架
+#### 3.1 二分查找框架
 
 ```java
 int binarySearch(int[] nums, int target) {
@@ -499,7 +499,7 @@ int binarySearch(int[] nums, int target) {
 }
 ```
 
-### 3.2 寻找一个数（基本的二分搜索）
+#### 3.2 寻找一个数（基本的二分搜索）
 
 这个场景是最简单的，可能也是大家最熟悉的，即搜索一个数，如果存在，返回其索引，否则返回 -1。
 
@@ -521,7 +521,7 @@ int binarySearch(int[] nums, int target) {
 }
 ```
 
-### 3.3 寻找左侧边界的二分搜索
+#### 3.3 寻找左侧边界的二分搜索
 
 以下是最常见的代码形式，其中的标记是需要注意的细节：
 
@@ -549,7 +549,7 @@ int left_bound(int[] nums, int target) {
 }
 ```
 
-### 3.4 寻找右侧边界的二分查找
+#### 3.4 寻找右侧边界的二分查找
 
 类似寻找左侧边界的算法，这里也会提供两种写法，还是先写常见的左闭右开的写法，只有两处和搜索左侧边界不同，已标注：
 
@@ -659,7 +659,7 @@ int right_bound(int[] nums, int target) {
 ```
 
 
-### 3.5 python版本代码
+#### 3.5 python版本代码
 
 [MarineJoker](https://github.com/MarineJoker) 提供 Python3 代码  
 
@@ -757,9 +757,9 @@ def right_bound(nums, target):
 ```
 
 
-## 4  滑动窗口解题框架
+### 4  滑动窗口解题框架
 
-### 4.1 最小覆盖子串
+#### 4.1 最小覆盖子串
 
 ```cpp
 string minWindow(string s, string t) {
@@ -802,7 +802,7 @@ string minWindow(string s, string t) {
 }
 ```
 
-### 4.2 找到字符串中所有字母异位词
+#### 4.2 找到字符串中所有字母异位词
 
 实际上，这个 Easy 是属于了解双指针技巧的人的，只要把上一道题的代码改中更新 res 部分的代码稍加修改就成了这道题的解：
 
@@ -843,7 +843,7 @@ vector<int> findAnagrams(string s, string t) {
     return res;
 }
 ```
-### 4.3 无重复字符的最长子串
+#### 4.3 无重复字符的最长子串
 
 类似之前的思路，使用 window 作为计数器记录窗口中的字符出现次数，然后先向右移动 right，当 window 中出现重复字符时，开始移动 left 缩小窗口，如此往复：
 
@@ -885,7 +885,7 @@ while (right < s.size()) {
     }
 }
 ```
-
+#### 4.4 其他语言实现
 
 [Jiajun](https://github.com/liujiajun) 提供最小覆盖子串 Python3 代码：
 ```python3
@@ -952,9 +952,9 @@ def lengthOfLongestSubstring(self, s: str) -> int:
 ```
 
 
-## 5  双指针技巧
+### 5  双指针技巧
 
-### 5.1 快慢指针的常见算法
+#### 5.1 常见用法
 
 **1、判定链表中是否含有环**
 
@@ -1028,7 +1028,7 @@ while (fast != null) {
 return slow;
 ```
 
-### 5.2 左右指针的常用算法
+#### 5.2 左右指针的常用算法
 
 左右指针在数组中实际是指两个索引值，一般初始化为 left = 0, right = nums.length - 1 。
 
@@ -1096,7 +1096,7 @@ void reverse(int[] nums) {
 
 这也许是双指针技巧的最高境界了，如果掌握了此算法，可以解决一大类子字符串匹配的问题，不过「滑动窗口」稍微比上述的这些算法复杂些。
 
-### 5.3 其他语言  
+#### 5.3 其他语言实现  
 
 **C++**
 
