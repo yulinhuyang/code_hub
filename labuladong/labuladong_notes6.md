@@ -1,0 +1,855 @@
+## 第四章、高频面试系列
+
+### 如何实现LRU算法
+
+计算机的缓存容量有限，如果缓存满了就要删除一些内容，给新内容腾位置。但问题是，删除哪些内容呢？我们肯定希望删掉哪些没什么用的缓存，而把有用的数据继续留在缓存里，方便之后继续使用。那么，什么样的数据，我们判定为「有用的」的数据呢？
+
+LRU 缓存淘汰算法就是一种常用策略。LRU 的全称是 Least Recently Used，也就是说我们认为最近使用过的数据应该是是「有用的」，很久都没用过的数据应该是无用的，内存满了就优先删那些很久没用过的数据。
+
+设计：
+
+1、显然 `cache` 中的元素必须有时序，以区分最近使用的和久未使用的数据，当容量满了之后要删除最久未使用的那个元素腾位置。
+
+2、我们要在 `cache` 中快速找某个 `key` 是否已存在并得到对应的 `val`；
+
+3、每次访问 `cache` 中的某个 `key`，需要将这个元素变为最近使用的，也就是说 `cache` 要支持在任意位置快速插入和删除元素。
+
+```java
+class Node {
+    public int key, val;
+    public Node next, prev;
+    public Node(int k, int v) {
+        this.key = k;
+        this.val = v;
+    }
+}
+```
+
+```java
+class DoubleList {  
+    // 头尾虚节点
+    private Node head, tail;  
+    // 链表元素数
+    private int size;
+    
+    public DoubleList() {
+        // 初始化双向链表的数据
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
+        head.next = tail;
+        tail.prev = head;
+        size = 0;
+    }
+
+    // 在链表尾部添加节点 x，时间 O(1)
+    public void addLast(Node x) {
+        x.prev = tail.prev;
+        x.next = tail;
+        tail.prev.next = x;
+        tail.prev = x;
+        size++;
+    }
+
+    // 删除链表中的 x 节点（x 一定存在）
+    // 由于是双链表且给的是目标 Node 节点，时间 O(1)
+    public void remove(Node x) {
+        x.prev.next = x.next;
+        x.next.prev = x.prev;
+        size--;
+    }
+    
+    // 删除链表中第一个节点，并返回该节点，时间 O(1)
+    public Node removeFirst() {
+        if (head.next == tail)
+            return null;
+        Node first = head.next;
+        remove(first);
+        return first;
+    }
+
+    // 返回链表长度，时间 O(1)
+    public int size() { return size; }
+
+}
+```
+**注意我们实现的双链表 API 只能从尾部插入，也就是说靠尾部的数据是最近使用的，靠头部的数据是最久为使用的**。
+
+```java
+class LRUCache {
+    // key -> Node(key, val)
+    private HashMap<Integer, Node> map;
+    // Node(k1, v1) <-> Node(k2, v2)...
+    private DoubleList cache;
+    // 最大容量
+    private int cap;
+    
+    public LRUCache(int capacity) {
+        this.cap = capacity;
+        map = new HashMap<>();
+        cache = new DoubleList();
+    }
+```
+
+```java
+/* 将某个 key 提升为最近使用的 */
+private void makeRecently(int key) {
+    Node x = map.get(key);
+    // 先从链表中删除这个节点
+    cache.remove(x);
+    // 重新插到队尾
+    cache.addLast(x);
+}
+
+/* 添加最近使用的元素 */
+private void addRecently(int key, int val) {
+    Node x = new Node(key, val);
+    // 链表尾部就是最近使用的元素
+    cache.addLast(x);
+    // 别忘了在 map 中添加 key 的映射
+    map.put(key, x);
+}
+
+/* 删除某一个 key */
+private void deleteKey(int key) {
+    Node x = map.get(key);
+    // 从链表中删除
+    cache.remove(x);
+    // 从 map 中删除
+    map.remove(key);
+}
+
+/* 删除最久未使用的元素 */
+private void removeLeastRecently() {
+    // 链表头部的第一个元素就是最久未使用的
+    Node deletedNode = cache.removeFirst();
+    // 同时别忘了从 map 中删除它的 key
+    int deletedKey = deletedNode.key;
+    map.remove(deletedKey);
+}
+```
+
+```java
+public int get(int key) {
+    if (!map.containsKey(key)) {
+        return -1;
+    }
+    // 将该数据提升为最近使用的
+    makeRecently(key);
+    return map.get(key).val;
+}
+```
+
+```java
+public void put(int key, int val) {
+    if (map.containsKey(key)) {
+        // 删除旧的数据
+        deleteKey(key);
+        // 新插入的数据为最近使用的数据
+        addRecently(key, val);
+        return;
+    }
+    
+    if (cap == cache.size()) {
+        // 删除最久未使用的元素
+        removeLeastRecently();
+    }
+    // 添加为最近使用的元素
+    addRecently(key, val);
+}
+```
+
+#### 用 Java 的内置类型 `LinkedHashMap` 来实现 LRU 算法
+
+
+```java
+class LRUCache {
+    int cap;
+    LinkedHashMap<Integer, Integer> cache = new LinkedHashMap<>();
+    public LRUCache(int capacity) { 
+        this.cap = capacity;
+    }
+    
+    public int get(int key) {
+        if (!cache.containsKey(key)) {
+            return -1;
+        }
+        // 将 key 变为最近使用
+        makeRecently(key);
+        return cache.get(key);
+    }
+    
+    public void put(int key, int val) {
+        if (cache.containsKey(key)) {
+            // 修改 key 的值
+            cache.put(key, val);
+            // 将 key 变为最近使用
+            makeRecently(key);
+            return;
+        }
+        
+        if (cache.size() >= this.cap) {
+            // 链表头部就是最久未使用的 key
+            int oldestKey = cache.keySet().iterator().next();
+            cache.remove(oldestKey);
+        }
+        // 将新的 key 添加链表尾部
+        cache.put(key, val);
+    }
+    
+    private void makeRecently(int key) {
+        int val = cache.get(key);
+        // 删除 key，重新插入到队尾
+        cache.remove(key);
+        cache.put(key, val);
+    }
+}
+```
+
+#### 其他语言实现
+
+[146.LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/)
+
+##### c++
+
+[gowufang](https://github.com/gowufang)提供第146题C++代码：
+```cpp
+class LRUCache {
+        public:
+        struct node {
+            int val;
+            int key;
+            node* pre;//当前节点的前一个节点
+            node* next;//当前节点的后一个节点
+            node(){}
+            node(int key, int val):key(key), val(val), pre(NULL), next(NULL){}
+        };
+
+        LRUCache(int size) {
+            this->size = size;
+            head = new node();
+            tail = new node();
+            head->next = tail;
+            tail->pre = head;
+        }
+
+
+        void movetohead(node* cur)//相当于一个insert操作，在head 和 head的next之间插入一个节点
+        {
+            node* next = head->next;//head的next先保存起来
+            head->next = cur;//将当前节点移动到head的后面
+            cur->pre = head;//当前节点cur的pre指向head
+            next->pre = cur;
+            cur->next = next;
+        }
+
+        node* deletecurrentnode(node* cur)//移除当前节点
+        {
+            cur->pre->next = cur->next;
+            cur->next->pre = cur->pre;
+            return cur;
+        }
+        void makerecently(node* cur)
+        {
+            node* temp = deletecurrentnode(cur);// 删除 cur，要重新插入到对头
+            movetohead(temp);//cur放到队头去
+        }
+        int get(int key)
+        {
+            int ret = -1;
+            if ( map.count(key))
+            {
+                node* temp = map[key];
+                makerecently(temp);// 将 key 变为最近使用
+                ret = temp->val;
+            }
+            return ret;
+        }
+
+        void put(int key, int value) {
+            if ( map.count(key))
+            {
+                // 修改 key 的值
+                node* temp = map[key];
+                temp->val = value;
+                // 将 key 变为最近使用
+                makerecently(temp);
+            }
+            else
+            {
+                node* cur = new node(key, value);
+                if( map.size()== size )
+                {
+                    // 链表头部就是最久未使用的 key
+                    node *temp = deletecurrentnode(tail->pre);
+                    map.erase(temp->key);
+                }
+                movetohead(cur);
+                map[key] = cur;
+
+            }
+        
+        }
+
+        unordered_map<int, node*> map;
+        int size;
+        node* head, *tail;
+
+    };
+```
+
+
+
+##### python
+
+```python
+"""
+所谓LRU缓存，根本的难点在于记录最久被使用的键值对，这就设计到排序的问题，
+在python中，天生具备排序功能的字典就是OrderDict。
+注意到，记录最久未被使用的键值对的充要条件是将每一次put/get的键值对都定义为
+最近访问，那么最久未被使用的键值对自然就会排到最后。
+如果你深入python OrderDict的底层实现，就会知道它的本质是个双向链表+字典。
+它内置支持了
+1. move_to_end来重排链表顺序，它可以让我们将最近访问的键值对放到最后面
+2. popitem来弹出键值对，它既可以弹出最近的，也可以弹出最远的，弹出最远的就是我们要的操作。
+"""
+from collections import OrderedDict
+class LRUCache:
+  def __init__(self, capacity: int):
+    self.capacity = capacity  # cache的容量
+    self.visited = OrderedDict()  # python内置的OrderDict具备排序的功能
+    
+  def get(self, key: int) -> int:
+    if key not in self.visited:
+      return -1
+    self.visited.move_to_end(key)  # 最近访问的放到链表最后，维护好顺序
+    return self.visited[key]
+
+  def put(self, key: int, value: int) -> None:
+    if key not in self.visited and len(self.visited) == self.capacity:
+      # last=False时，按照FIFO顺序弹出键值对
+      # 因为我们将最近访问的放到最后，所以最远访问的就是最前的，也就是最first的，故要用FIFO顺序
+      self.visited.popitem(last=False)
+      self.visited[key]=value
+      self.visited.move_to_end(key)    # 最近访问的放到链表最后，维护好顺序
+
+
+```
+
+### 如何高效寻找素数
+
+#### 设计
+
+```java
+int countPrimes(int n) {
+    boolean[] isPrim = new boolean[n];
+    Arrays.fill(isPrim, true);
+    for (int i = 2; i * i < n; i++) 
+        if (isPrim[i]) 
+            for (int j = i * i; j < n; j += i) 
+                isPrim[j] = false;
+    
+    int count = 0;
+    for (int i = 2; i < n; i++)
+        if (isPrim[i]) count++;
+    
+    return count;
+}
+```
+
+
+
+
+#### C++实现
+
+[204.计数质数](https://leetcode-cn.com/problems/count-primes)
+
+采用的算法是埃拉托斯特尼筛法
+埃拉托斯特尼筛法的具体内容就是：**要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的倍数剔除，剩下的就是素数。**
+同时考虑到大于2的偶数都不是素数，所以可以进一步优化成：**要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的奇数倍剔除，剩下的奇数就是素数。**
+此算法其实就是上面的Java解法所采用的。
+
+这里提供C++的代码：
+```C++
+class Solution {
+  public:
+  int countPrimes(int n) {
+    int res = 0;
+    bool prime[n+1];
+    for(int i = 0; i < n; ++i)
+      prime[i] = true;
+
+    for(int i = 2; i <= sqrt(n); ++i)   //计数过程 
+    {                                   //外循环优化，因为判断一个数是否为质数只需要整除到sqrt(n)，反推亦然
+      if(prime[i])
+      {
+        for(int j = i * i; j < n; j += i)   //内循环优化，i*i之前的比如i*2，i*3等，在之前的循环中已经验证了
+        {
+          prime[j] = false;
+        }
+      }      
+    }
+    for (int i = 2; i < n; ++i)
+      if (prime[i])  res++;     //最后遍历统计一遍，存入res
+
+    return res;    
+  }
+};
+```
+
+###  二分查找应用
+
+[875.爱吃香蕉的珂珂](https://leetcode-cn.com/problems/koko-eating-bananas)
+
+[1011.在D天内送达包裹的能力](https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days)
+
+
+#### koko偷香蕉
+
+珂珂喜欢吃香蕉。这里有 N 堆香蕉，第 i 堆中有 piles[i] 根香蕉。警卫已经离开了，将在 H 小时后回来。
+
+珂珂可以决定她吃香蕉的速度 K （单位：根/小时）。每个小时，她将会选择一堆香蕉，从中吃掉 K 根。如果这堆香蕉少于 K 根，她将吃掉这堆的所有香蕉，然后这一小时内不会再吃更多的香蕉。  
+
+珂珂喜欢慢慢吃，但仍然想在警卫回来前吃掉所有的香蕉。
+
+返回她可以在 H 小时内吃掉所有香蕉的最小速度 K（K 为整数）。
+
+示例 1：
+
+输入: piles = [3,6,7,11], H = 8
+
+输出: 4
+
+```java
+int minEatingSpeed(int[] piles, int H) {
+    // 套用搜索左侧边界的算法框架
+    int left = 1, right = getMax(piles) + 1;
+    while (left < right) {
+        // 防止溢出
+        int mid = left + (right - left) / 2;
+        if (canFinish(piles, mid, H)) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return left;
+}
+
+```java
+// 时间复杂度 O(N)
+boolean canFinish(int[] piles, int speed, int H) {
+    int time = 0;
+    for (int n : piles) {
+        time += timeOf(n, speed);
+    }
+    return time <= H;
+}
+
+int timeOf(int n, int speed) {
+    return (n / speed) + ((n % speed > 0) ? 1 : 0);
+}
+
+int getMax(int[] piles) {
+    int max = 0;
+    for (int n : piles)
+        max = Math.max(n, max);
+    return max;
+}
+```
+
+
+#### 运输问题：
+
+要在 `D` 天内运输完所有货物，货物不可分割，如何确定运输的最小载重呢（下文称为 `cap`）？
+
+其实本质上和 Koko 吃香蕉的问题一样的，首先确定 `cap` 的最小值和最大值分别为 `max(weights)` 和 `sum(weights)`。
+
+我们要求**最小载重**，所以可以用搜索左侧边界的二分查找算法优化线性搜索：
+
+```java
+// 寻找左侧边界的二分查找
+int shipWithinDays(int[] weights, int D) {
+	// 载重可能的最小值
+    int left = getMax(weights);
+	// 载重可能的最大值 + 1
+    int right = getSum(weights) + 1;
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (canFinish(weights, D, mid)) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return left;
+}
+
+// 如果载重为 cap，是否能在 D 天内运完货物？
+boolean canFinish(int[] w, int D, int cap) {
+    int i = 0;
+    for (int day = 0; day < D; day++) {
+        int maxCap = cap;
+        while ((maxCap -= w[i]) >= 0) {
+            i++;
+            if (i == w.length)
+                return true;
+        }
+    }
+    return false;
+}
+```
+
+#### 其他语言实现
+
+##### c++
+[cchroot](https://github.com/cchroot) 提供 C++ 代码：
+
+```c++
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& piles, int H) {
+        // 二分法查找最小速度
+        // 初始化最小速度为 1，最大速度为题目设定的最大值 10^9
+        // 这里也可以遍历 piles 数组，获取数组中的最大值，设置 right 为数组中的最大值即可(因为每堆香蕉1小时吃完是最快的)
+        // log2(10^9) 约等于30，次数不多，所以这里暂时就不采取遍历获取最大值了
+        int left = 1, right = pow(10, 9);
+        while (left < right) { // 二分法基本的防止溢出
+            int mid = left + (right - left) / 2;
+            // 以 mid 的速度吃香蕉，是否能在 H 小时内吃完香蕉
+            if (!canFinish(piles, mid, H))
+                left = mid + 1;
+            else
+                right = mid;
+        }
+        return left;
+    }
+
+    // 以 speed 的速度是否能把香蕉吃完
+    bool canFinish(vector<int>& piles, int speed, int H) {
+        int time = 0;
+        // 遍历累加时间 time
+        for (int p: piles)
+            time += (p - 1) / speed + 1;
+        return time <= H; // time 小于等于 H 说明能在 H 小时吃完返回 true, 否则返回 false
+    }
+};
+```
+
+##### python
+[tonytang731](https://https://github.com/tonytang731) 提供 Python3 代码：
+
+```python
+import math
+
+class Solution:
+    def minEatingSpeed(self, piles, H):
+        # 初始化起点和终点， 最快的速度可以一次拿完最大的一堆
+        start = 1
+        end = max(piles)
+        
+        # while loop进行二分查找
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            
+            # 如果中点所需时间大于H, 我们需要加速， 将起点设为中点
+            if self.timeH(piles, mid) > H:
+                start = mid
+            # 如果中点所需时间小于H, 我们需要减速， 将终点设为中点
+            else:
+                end = mid
+                
+        # 提交前确认起点是否满足条件，我们要尽量慢拿
+        if self.timeH(piles, start) <= H:
+            return start
+        
+        # 若起点不符合， 则中点是答案
+        return end
+            
+        
+        
+    def timeH(self, piles, K):
+        # 初始化时间
+        H = 0
+        
+        #求拿每一堆需要多长时间
+        for pile in piles:
+            H += math.ceil(pile / K)
+            
+        return H
+```
+
+
+### 如何高效解决接雨水问题
+
+[42.接雨水](https://leetcode-cn.com/problems/trapping-rain-water)
+
+#### 暴力
+
+```cpp
+int trap(vector<int>& height) {
+    int n = height.size();
+    int res = 0;
+    for (int i = 1; i < n - 1; i++) {
+        int l_max = 0, r_max = 0;
+        // 找右边最高的柱子
+        for (int j = i; j < n; j++)
+            r_max = max(r_max, height[j]);
+        // 找左边最高的柱子
+        for (int j = i; j >= 0; j--)
+            l_max = max(l_max, height[j]);
+        // 如果自己就是最高的话，
+        // l_max == r_max == height[i]
+        res += min(l_max, r_max) - height[i];
+    }
+    return res;
+}
+```
+
+
+#### 备忘录优化
+
+
+```cpp
+int trap(vector<int>& height) {
+    if (height.empty()) return 0;
+    int n = height.size();
+    int res = 0;
+    // 数组充当备忘录
+    vector<int> l_max(n), r_max(n);
+    // 初始化 base case
+    l_max[0] = height[0];
+    r_max[n - 1] = height[n - 1];
+    // 从左向右计算 l_max
+    for (int i = 1; i < n; i++)
+        l_max[i] = max(height[i], l_max[i - 1]);
+    // 从右向左计算 r_max
+    for (int i = n - 2; i >= 0; i--) 
+        r_max[i] = max(height[i], r_max[i + 1]);
+    // 计算答案
+    for (int i = 1; i < n - 1; i++) 
+        res += min(l_max[i], r_max[i]) - height[i];
+    return res;
+}
+```
+
+#### 双指针解法
+
+```cpp
+int trap(vector<int>& height) {
+    if (height.empty()) return 0;
+    int n = height.size();
+    int left = 0, right = n - 1;
+    int res = 0;
+    
+    int l_max = height[0];
+    int r_max = height[n - 1];
+    
+    while (left <= right) {
+        l_max = max(l_max, height[left]);
+        r_max = max(r_max, height[right]);
+        
+        // res += min(l_max, r_max) - height[i]
+        if (l_max < r_max) {
+            res += l_max - height[left];
+            left++; 
+        } else {
+            res += r_max - height[right];
+            right--;
+        }
+    }
+    return res;
+}
+```
+
+#### 其他语言
+
+
+[Yifan Zhang](https://github.com/FanFan0919) 提供 java 代码
+
+**双指针解法**：时间复杂度 O(N)，空间复杂度 O(1)
+
+对cpp版本的解法有非常微小的优化。  
+因为我们每次循环只会选 left 或者 right 处的柱子来计算，因此我们并不需要在每次循环中同时更新`maxLeft`和`maxRight`。  
+我们可以先比较 `maxLeft` 和 `maxRight`，决定这次选择计算的柱子是 `height[left]` 或者 `height[right]` 后再更新对应的 `maxLeft` 或 `maxRight`。  
+当然这并不会在时间上带来什么优化，只是提供一种思路。
+
+```java
+class Solution {
+    public int trap(int[] height) {
+        if (height == null || height.length == 0) return 0;
+        int left = 0, right = height.length - 1;
+        int maxLeft = height[left], maxRight = height[right];
+        int res = 0;
+        
+        while (left < right) {
+            // 比较 maxLeft 和 maxRight，决定这次计算 left 还是 right 处的柱子
+            if (maxLeft < maxRight) {
+                left++;
+                maxLeft = Math.max(maxLeft, height[left]);  // update maxLeft
+                res += maxLeft - height[left];
+            } else {
+                right--;
+                maxRight = Math.max(maxRight, height[right]);   // update maxRight
+                res += maxRight - height[right];
+            }
+        }
+        
+        return res;
+    }
+}
+```
+
+
+### 如何去除有序数组的重复元素
+
+#### 描述
+
+**对于数组相关的算法问题，有一个通用的技巧：要尽量避免在中间删除元素，那我就先想办法把这个元素换到最后去**。这样的话，最终待删除的元素都拖在数组尾部，一个一个 pop 掉就行了，每次操作的时间复杂度也就降低到 O(1) 了。
+
+**双指针**
+
+我们让慢指针 `slow` 走左后面，快指针 `fast` 走在前面探路，找到一个不重复的元素就告诉 `slow` 并让 `slow` 前进一步。这样当 `fast` 指针遍历完整个数组 `nums` 后，**`nums[0..slow]` 就是不重复元素，之后的所有元素都是重复元素**。
+
+```java
+int removeDuplicates(int[] nums) {
+    int n = nums.length;
+    if (n == 0) return 0;
+    int slow = 0, fast = 1;
+    while (fast < n) {
+        if (nums[fast] != nums[slow]) {
+            slow++;
+            // 维护 nums[0..slow] 无重复
+            nums[slow] = nums[fast];
+        }
+        fast++;
+    }
+    // 长度为索引 + 1
+    return slow + 1;
+}
+```
+
+**一个有序链表去重**
+
+```java
+ListNode deleteDuplicates(ListNode head) {
+    if (head == null) return null;
+    ListNode slow = head, fast = head.next;
+    while (fast != null) {
+        if (fast.val != slow.val) {
+            // nums[slow] = nums[fast];
+            slow.next = fast;
+            // slow++;
+            slow = slow.next;
+        }
+        // fast++
+        fast = fast.next;
+    }
+    // 断开与后面重复元素的连接
+    slow.next = null;
+    return head;
+}
+```
+
+
+##### python实现
+
+[eric wang](https://www.github.com/eric496) 提供有序数组 Python3 代码 
+
+```python
+def removeDuplicates(self, nums: List[int]) -> int:
+    n = len(nums)
+    
+    if n == 0:
+        return 0
+    
+    slow, fast = 0, 1
+    
+    while fast < n:
+        if nums[fast] != nums[slow]:
+            slow += 1
+            nums[slow] = nums[fast]
+            
+        fast += 1
+        
+    return slow + 1
+```
+
+[eric wang](https://www.github.com/eric496) 提供有序链表 Python3 代码 
+
+```python
+def deleteDuplicates(self, head: ListNode) -> ListNode:
+    if not head:
+        return head
+    
+    slow, fast = head, head.next
+    
+    while fast:
+        if fast.val != slow.val:
+            slow.next = fast
+            slow = slow.next
+            
+        fast = fast.next
+
+    # 断开与后面重复元素的连接   
+    slow.next = None
+    return head
+```
+
+### 如何寻找最长回文子串
+
+[5.最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring)
+
+下面，就来说一下正确的思路，如何使用双指针。
+
+**寻找回文串的问题核心思想是：从中间开始向两边扩散来判断回文串**。对于最长回文子串，就是这个意思：
+
+```python
+for 0 <= i < len(s):
+    找到以 s[i] 为中心的回文串
+    更新答案
+```
+
+但是呢，我们刚才也说了，回文串的长度可能是奇数也可能是偶数，如果是 `abba`这种情况，没有一个中心字符，上面的算法就没辙了。所以我们可以修改一下：
+
+```python
+for 0 <= i < len(s):
+    找到以 s[i] 为中心的回文串
+    找到以 s[i] 和 s[i+1] 为中心的回文串
+    更新答案
+```
+
+实现
+
+要传入两个指针 `l` 和 `r` 呢？**因为这样实现可以同时处理回文串长度为奇数和偶数的情况**：
+
+```python
+for 0 <= i < len(s):
+    # 找到以 s[i] 为中心的回文串
+    palindrome(s, i, i)
+    # 找到以 s[i] 和 s[i+1] 为中心的回文串
+    palindrome(s, i, i + 1)
+    更新答案
+```
+
+下面看下 `longestPalindrome` 的完整代码：
+
+```cpp
+string longestPalindrome(string s) {
+    string res;
+    for (int i = 0; i < s.size(); i++) {
+        // 以 s[i] 为中心的最长回文子串
+        string s1 = palindrome(s, i, i);
+        // 以 s[i] 和 s[i+1] 为中心的最长回文子串
+        string s2 = palindrome(s, i, i + 1);
+        // res = longest(res, s1, s2)
+        res = res.size() > s1.size() ? res : s1;
+        res = res.size() > s2.size() ? res : s2;
+    }
+    return res;
+}
+```
+
+
+
+
+
