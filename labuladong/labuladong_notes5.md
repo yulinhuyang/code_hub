@@ -1,6 +1,20 @@
-### 前缀和技巧
+### 8 前缀和技巧
 
-#### 前缀和思路
+560. 和为K的子数组
+
+给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。
+
+示例 1 :
+
+输入:nums = [1,1,1], k = 2
+输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。
+说明 :
+
+数组的长度为 [1, 20,000]。
+数组中元素的范围是 [-1000, 1000] ，且整数 k 的范围是 [-1e7, 1e7]。
+
+
+#### 8.1 前缀和思路
 
 前缀和的思路是这样的，对于一个给定的数组 `nums`，我们额外开辟一个前缀和数组进行预处理：
 
@@ -42,7 +56,7 @@ int subarraySum(int[] nums, int k) {
 }
 ```
 
-#### 应用
+#### 8.2 应用
 
 前缀和不难，却很有用，主要用于处理数组区间的问题。
 
@@ -60,9 +74,7 @@ for (int i = 1; i < count.length; i++)
     count[i] = count[i] + count[i-1];
 ```
 
-### 字符串乘法
-
-#### 描述
+### 9 字符串乘法
 
 给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。
 
@@ -74,6 +86,8 @@ for (int i = 1; i < count.length; i++)
 
 输入: num1 = "123", num2 = "456"
 输出: "56088"
+
+#### 9.1 实现
 
 ```java
 string multiply(string num1, string num2) {
@@ -103,10 +117,10 @@ string multiply(string num1, string num2) {
     return str.size() == 0 ? "0" : str;
 }
 ```
-#### 其他语言实现
+#### 9.2 其他语言实现
 
 
-### python
+**python**
 
 [fengshuu](https://github.com/fengshuu) 提供 Python 解法代码：
 ```python
@@ -137,7 +151,7 @@ def multiply(num1: str, num2: str) -> str:
     return "0" if len(result_str) == 0 else result_str
 ```
 
-### java
+**java**
 
 [Zane Wang](https://github.com/zanecat) 提供 Java 解法代码：
 ```java
@@ -183,9 +197,9 @@ public String multiply(String num1, String num2) {
 ```
 
 
-### FloodFill算法详解及应用
+### 10 FloodFill算法详解及应用
 
-#### 描述框架
+#### 10.1 描述框架
 
 [733.图像渲染](https://leetcode-cn.com/problems/flood-fill)
 
@@ -244,11 +258,21 @@ boolean inArea(int[][] image, int x, int y) {
 ```
 
 
-### 区间调度之区间合并问题
+### 11 区间调度之区间合并问题
 
 [56.合并区间](https://leetcode-cn.com/problems/merge-intervals)
 
-#### 区间合并
+以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间。
+
+    示例 1：
+
+    输入：intervals = [[1,3],[2,6],[8,10],[15,18]]
+    输出：[[1,6],[8,10],[15,18]]
+    解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
+
+ 
+
+#### 11.1 区间合并
 
 一个区间可以表示为 `[start, end]`，前文聊的区间调度问题，需要按 `end` 排序，以便满足贪心选择性质。而对于区间合并问题，其实按 `end` 和 `start` 排序都可以，不过为了清晰起见，我们选择按 `start` 排序。
 
@@ -276,9 +300,9 @@ def merge(intervals):
     return res
 ```
 
-#### 其他语言实现
+#### 11.2 其他语言实现
 
-##### java
+**java**
 
 ```java
 class Solution {
@@ -341,7 +365,7 @@ class Solution {
 }
 ```
 
-##### c++
+**c++**
 
 [Kian](https://github.com/KianKw/) 提供第 56 题 C++ 代码
 
@@ -377,11 +401,25 @@ public:
 };
 ```
 
-### 区间调度之区间交集问题
+### 12 区间调度之区间交集问题
 
 [986.区间列表的交集](https://leetcode-cn.com/problems/interval-list-intersections)
 
-#### 解法
+给定两个由一些 闭区间 组成的列表，firstList 和 secondList ，其中 firstList[i] = [starti, endi] 而 secondList[j] = [startj, endj] 。每个区间列表都是成对 不相交 的，并且 已经排序 。
+
+返回这 两个区间列表的交集 。
+
+形式上，闭区间 [a, b]（其中 a <= b）表示实数 x 的集合，而 a <= x <= b 。
+
+两个闭区间的 交集 是一组实数，要么为空集，要么为闭区间。例如，[1, 3] 和 [2, 4] 的交集为 [2, 3] 。
+
+ 
+    输入：firstList = [[0,2],[5,10],[13,23],[24,25]], secondList = [[1,5],[8,12],[15,24],[25,26]]
+    输出：[[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
+ 
+
+
+#### 12.1 解法
 
 解决区间问题的思路一般是先排序
 
@@ -405,7 +443,7 @@ def intervalIntersection(A, B):
     return res
 ```
 
-#### java实现
+#### 12.2 java实现
 
 [KiraZh](https://github.com/KiraZh)提供第986题Java代码
 
@@ -432,9 +470,24 @@ class Solution {
 }
 ```
 
-### 信封嵌套问题
+### 13 信封嵌套问题
 
-#### 描述
+给你一个二维整数数组 envelopes ，其中 envelopes[i] = [wi, hi] ，表示第 i 个信封的宽度和高度。
+
+当另一个信封的宽度和高度都比这个信封大的时候，这个信封就可以放进另一个信封里，如同俄罗斯套娃一样。
+
+请计算 最多能有多少个 信封能组成一组“俄罗斯套娃”信封（即可以把一个信封放到另一个信封里面）。
+
+注意：不允许旋转信封。
+
+ 
+    示例 1：
+
+    输入：envelopes = [[5,4],[6,4],[6,7],[2,3]]
+    输出：3
+    解释：最多信封的个数为 3, 组合为: [2,3] => [5,4] => [6,7]。
+
+#### 13.1 描述
 
 **先对宽度 `w` 进行升序排序，如果遇到 `w` 相同的情况，则按照高度 `h` 降序排序。之后把所有的 `h` 作为一个数组，在这个数组上计算 LIS 的长度就是答案。**
 
@@ -485,7 +538,9 @@ public int lengthOfLIS(int[] nums) {
 }
 ```
 
-### 洗牌算法
+### 14 洗牌算法
+
+#### 14.1 原理
 
 靠随机选取元素交换来获取随机性
 
@@ -518,7 +573,7 @@ void shuffle(int[] arr) {
         int rand = randInt(0, i);
 ```
 
-#### 蒙特卡罗方法验证正确性
+#### 14.2 蒙特卡罗方法验证正确性
 
 洗牌算法，或者说随机乱置算法的**正确性衡量标准是：对于每种可能的结果出现的概率必须相等，也就是说要足够随机。**
 
@@ -543,9 +598,9 @@ for (int feq : count)
     print(feq / N + " "); // 频率
 ```
 
-### 递归详解
+### 15 递归详解
 
-#### 写递归的技巧
+#### 15.1 写递归的技巧
 
 **明白一个函数的作用并相信它能完成这个任务，千万不要试图跳进细节。**
 
@@ -610,7 +665,7 @@ int count(TreeNode node, int sum) {
 }
 ```
 
-#### 分治算法
+#### 15.2 分治算法
 
 **归并排序**，典型的分治算法；分治，典型的递归结构。
 
