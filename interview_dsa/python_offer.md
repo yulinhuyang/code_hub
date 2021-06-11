@@ -32,7 +32,7 @@ https://blog.csdn.net/qq_32424059/article/details/88855423
 
 **list 和str互相转换：**
   
-    **str->list**
+    str->list
     
     str1 = "12345"
     list1 = list(str1)
@@ -40,7 +40,7 @@ https://blog.csdn.net/qq_32424059/article/details/88855423
     
     list2 = str2.split( ) 或者  list3 = str3.split(".")
     
-    **list->str
+    list->str
     
     str4 = "".join(list3)  或者 str4 = " ".join(list3)
     
