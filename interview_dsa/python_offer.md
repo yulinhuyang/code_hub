@@ -20,3 +20,8 @@ array = [0 for i in range(3)]
 two_array = [[0 for i in range(3)] for i in range(3)]
 
 
+python反向循环：
+
+for i in range(len(a)-1,-1,-1):
+
+while循环，非+1情况
