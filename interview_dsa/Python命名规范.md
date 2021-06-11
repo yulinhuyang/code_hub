@@ -40,7 +40,7 @@ GLOBAL_VAR_NAME,CONSTANT_NAME
 method_name，function_name，instance_var_name, function_parameter_name, local_var_name
 
 
-
+常用的，除了类名,其他全部： 全部小写+下划线驼峰
 
 
 
