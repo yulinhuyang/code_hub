@@ -44,10 +44,42 @@ https://blog.csdn.net/qq_32424059/article/details/88855423
     
     str4 = "".join(list3)  或者 str4 = " ".join(list3)
     
+ 
+**list常用操作**
+
+    insert(index)  pop(-1)
+
+    反转链表： res[::-1]  reverse(res)
+
+
+fib 循环法: a,b = b, a+b
+
+**for range**
     
+    指定 start stop step
+
+ 
+ **简单数据结构**
+ 
+     class ListNode:
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+
+    class TreeNode:
+        def __init__(self, x):
+            self.val = x
+            self.left = None
+            self.right = None
+   
+ **注意点**
     
-    
-    
+    return None 和return []
+
+    判等 ==
+
+    self 使用
+
     
     
     
