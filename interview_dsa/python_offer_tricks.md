@@ -1,5 +1,7 @@
 ### 1 主要参考：
 
+刷题顺序： 剑指offer --> labuladong --> 头条腾讯 高频面试题
+
 剑指offer:
 
 https://github.com/JushuangQiao/Python-Offer
