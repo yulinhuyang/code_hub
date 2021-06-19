@@ -3,24 +3,24 @@
 
 ### 13  机器人的运动范围
 
-def digit_num(num):
-    sum = 0
-    while num:
-        sum = sum + num%10
-        num = num//10
-    return sum
- 
-class Solution:
-        def movingCount(self, m: int, n: int, k: int) -> int:
-            
-            vis = set([(0,0)])
-            
-            for i in range(m):
-                for j in range(n):
-                    if ((i-1,j) in vis or (i,j-1) in vis) and digit_num(i) + digit_num(j) <= k:
-                        vis.add((i,j))
-            
-            return len(vis)
+    def digit_num(num):
+        sum = 0
+        while num:
+            sum = sum + num%10
+            num = num//10
+        return sum
+
+    class Solution:
+            def movingCount(self, m: int, n: int, k: int) -> int:
+
+                vis = set([(0,0)])
+
+                for i in range(m):
+                    for j in range(n):
+                        if ((i-1,j) in vis or (i,j-1) in vis) and digit_num(i) + digit_num(j) <= k:
+                            vis.add((i,j))
+
+                return len(vis)
 
 
 **Notes:**
