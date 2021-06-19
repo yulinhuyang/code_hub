@@ -1,5 +1,6 @@
 ### 12 矩阵中的路径
 
+ ```python
     class Solution:
         def exist(self, board: List[List[str]], word: str) -> bool:
 
@@ -22,7 +23,7 @@
                        return True
 
             return False
-            
+ ```           
 **Notes**
 
 注意这里的board[i][j] = '' 操作，再board[i][j]=word[k]撤销操作
@@ -30,6 +31,7 @@
 
 ### 13  机器人的运动范围
 
+ ```python
     def digit_num(num):
         sum = 0
         while num:
@@ -48,6 +50,7 @@
                             vis.add((i,j))
 
                 return len(vis)
+```
 
 
 **Notes:**
