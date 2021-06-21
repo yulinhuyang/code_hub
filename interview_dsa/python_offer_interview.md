@@ -230,6 +230,7 @@ str可以直接切片使用
 
 DP解法：
 
+```python
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         
@@ -257,7 +258,7 @@ class Solution:
                         dp[i][j] |= dp[i-1][j-1]
         
         return dp[m][n]
-		
+```
 		
 dp[i][j]:表示s的前i个字符和p中的前j个字符是否匹配。
 
@@ -267,23 +268,23 @@ dp数字、循环大小都要用size+1
 		
 穷举（写出状态方程，暴力穷举）--->备忘录消除重叠子问题（自顶而下的递归）--->自底而上的迭代解法
 
-#初始化base case
-dp[0][0][...] = base
+	#初始化base case
+	dp[0][0][...] = base
 
-#进行状态转移
-for 状态1  in 状态1的所有取值：
-	for 状态2 in 状态2的所有取值：
-		for ..
-			dp[状态1][状态2][..] = 求最值（选择1，选择2...）
+	#进行状态转移
+	for 状态1  in 状态1的所有取值：
+		for 状态2 in 状态2的所有取值：
+			for ..
+				dp[状态1][状态2][..] = 求最值（选择1，选择2...）
 
 python 没有++运算符，只有 a+=1
 
 not bool的结构
 
-
 ### 20  表示数值的字符串
 
 
+```python
 class Solution:
     def isNumber(self, s: str) -> bool:
         
@@ -321,7 +322,7 @@ class Solution:
         while index < n and s[index] == ' ':
             index = index + 1
         return has_num and index == n 
-
+```
 
 bool_after_dot = (len(s[index+1:]) >= 1) and ('0' <= s[index + 1] <= '9') 
 
