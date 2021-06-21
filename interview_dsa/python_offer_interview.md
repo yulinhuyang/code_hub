@@ -90,6 +90,7 @@ tup1 = ('physics', 'chemistry', 1997, 2000)
 
 ### 14 减绳子
 
+```python
 class Solution:
     def cuttingRope(self, n: int) -> int:
         
@@ -105,6 +106,7 @@ class Solution:
             return int(math.pow(3,a-1)*4)
         
         return int(math.pow(3,a)*b)
+``` 
  
 notes: 
 
@@ -115,6 +117,8 @@ notes:
 
 ### 15 二进制中1的个数
 
+```python
+
 class Solution:
     def hammingWeight(self, n: int) -> int:
         sum = 0
@@ -123,7 +127,7 @@ class Solution:
             sum = sum + 1
                     
         return sum
-
+```
 		
 二进制串读入
 
@@ -131,7 +135,7 @@ class Solution:
 
 ### 16 数值的整数次方
 
-
+```python
 class Solution:
     def myPow(self, x: float, n: int) -> float:
         
@@ -147,7 +151,7 @@ class Solution:
             x = x * x
         
         return result  
-
+```
 
 快速幂解析（二分法角度）
 
@@ -155,18 +159,20 @@ class Solution:
 
 ### 17 打印从1到最大的n位数
 
+```python
 class Solution:
     def printNumbers(self, n: int) -> List[int]:
         res = []
         for i in range(1, 10 ** n):
             res.append(i)
         return res
-
+```
 
 **  乘方
 
 ### 18  删除链表的节点
 
+```python
 class Solution:
     def deleteNode(self, head: ListNode, val: int) -> ListNode:
         
@@ -184,7 +190,7 @@ class Solution:
             pre.next = cur.next
         
         return head
-
+```
 
 pre cur  双指针循进
 
