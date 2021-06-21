@@ -88,4 +88,109 @@ dict = {'a': 1, 'b': 2, 'b': '3'}
 
 tup1 = ('physics', 'chemistry', 1997, 2000)
 
+### 14 减绳子
+
+class Solution:
+    def cuttingRope(self, n: int) -> int:
+        
+        
+        if n <=3: 
+            return  n - 1
+        
+        a = n // 3
+        b = n % 3
+        if b == 0:
+            return int(math.pow(3,a))   
+        if b == 1:
+            return int(math.pow(3,a-1)*4)
+        
+        return int(math.pow(3,a)*b)
+ 
+notes: 
+
+求幂 math.pow()
+
+枚举归纳法
+
+
+### 15 二进制中1的个数
+
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        sum = 0
+        while n:
+            n = n&(n-1)
+            sum = sum + 1
+                    
+        return sum
+
+		
+二进制串读入
+
+一定要先枚举分析题，举例测试题	
+
+### 16 数值的整数次方
+
+
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        
+        if n < 0:
+            x = 1/x
+            n = -n
+        
+        result = 1.0
+        while n:
+            if n&1:
+                result = result * x
+            n = n >> 1
+            x = x * x
+        
+        return result  
+
+
+快速幂解析（二分法角度）
+
+移位 + 快速幂
+
+### 17 打印从1到最大的n位数
+
+class Solution:
+    def printNumbers(self, n: int) -> List[int]:
+        res = []
+        for i in range(1, 10 ** n):
+            res.append(i)
+        return res
+
+
+**  乘方
+
+### 18  删除链表的节点
+
+class Solution:
+    def deleteNode(self, head: ListNode, val: int) -> ListNode:
+        
+        if head.val == val:
+            return head.next
+        
+        pre = head
+        cur = head.next
+        
+        while cur  and cur.val != val:
+            pre = cur
+            cur = cur.next
+        
+        if cur:
+            pre.next = cur.next
+        
+        return head
+
+
+pre cur  双指针循进
+
+python传值和引用,
+
+值传：列表、字典、集合
+
+引用传：数值、元组、字符串
 
