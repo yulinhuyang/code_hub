@@ -6,7 +6,7 @@ python实现 链表、快排和二分查找
  
 sentinel 0 | index 0 | index 1 | index 2 ...-> None
 
------------------------------- 
+```python 
 
 class node:
     def __init__(self,x):
@@ -57,7 +57,8 @@ class MyLinkedList:
                 head_node = head_node.next
             head_node.next = head_node.next.next
             self.size = self.size -1
-        
+```
+
  
 1 有sentinel==0的哨兵节点,然后index 从0 开始
 
@@ -73,58 +74,63 @@ class MyLinkedList:
 
 快速排序 随机法：
 
-	class Solution:
-    
-		def random_partition(self,nums,l,r)-> None:
-			pivot_index = random.randint(l,r)
-			nums[r],nums[pivot_index] = nums[pivot_index],nums[r]
-			i = l -1 
-			for j in range(l,r):
-				if nums[j] < nums[r]:
-					i = i + 1 
-					nums[i],nums[j] = nums[j],nums[i]
-			i = i + 1 
-			nums[i],nums[r] = nums[r],nums[i]
-			return i
-			
-			
-		def random_sort(self,nums,l,r)-> None:
-			if l >= r:
-				return
-			index = self.random_partition(nums,l,r)
-			self.random_sort(nums,l,index - 1)
-			self.random_sort(nums,index + 1,r)
-				
-		def sortArray(self, nums: List[int]) -> List[int]:
-			self.random_sort(nums,0,len(nums)-1)
-			return nums
+```python
 
+class Solution:
+
+	def random_partition(self,nums,l,r)-> None:
+		pivot_index = random.randint(l,r)
+		nums[r],nums[pivot_index] = nums[pivot_index],nums[r]
+		i = l -1 
+		for j in range(l,r):
+			if nums[j] < nums[r]:
+				i = i + 1 
+				nums[i],nums[j] = nums[j],nums[i]
+		i = i + 1 
+		nums[i],nums[r] = nums[r],nums[i]
+		return i
+
+
+	def random_sort(self,nums,l,r)-> None:
+		if l >= r:
+			return
+		index = self.random_partition(nums,l,r)
+		self.random_sort(nums,l,index - 1)
+		self.random_sort(nums,index + 1,r)
+
+	def sortArray(self, nums: List[int]) -> List[int]:
+		self.random_sort(nums,0,len(nums)-1)
+		return nums
+```
 	
 
-	random quicksort ---> random partition ---> random quicksort 左右
-	
-	random partition: 随机选，换右边，左循环，i,j挪左边
+random quicksort ---> random partition ---> random quicksort 左右
 
-	交换两个数： a,b = b,a
+random partition: 随机选，换右边，左循环，i,j挪左边
+
+交换两个数： a,b = b,a
 	
 
-###	3 二分查找
+###  3 二分查找
+
+```python
 		
-	def search(self, nums: List[int], target: int) -> int:
-        
-        left = 0
-        right = len(nums)-1
-        
-        while left <= right:
-            mid = left +(right - left)//2
-            if nums[mid] < target:
-                left = mid + 1
-            elif nums[mid] > target:
-                right = mid - 1
-            else:
-                return mid
-        return -1
-	
+def search(self, nums: List[int], target: int) -> int:
+
+left = 0
+right = len(nums)-1
+
+while left <= right:
+    mid = left +(right - left)//2
+    if nums[mid] < target:
+	left = mid + 1
+    elif nums[mid] > target:
+	right = mid - 1
+    else:
+	return mid
+return -1
+
+```	
 	
 
 
