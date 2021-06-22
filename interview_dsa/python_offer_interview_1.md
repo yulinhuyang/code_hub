@@ -1,6 +1,6 @@
 ### 21 调整数组顺序使奇数位于偶数前面
 
-
+```python
 class Solution:
     def exchange(self, nums: List[int]) -> List[int]:
         
@@ -15,7 +15,7 @@ class Solution:
                 continue
             nums[left],nums[right] = nums[right],nums[left]
         return nums
-
+```
 
 
 
@@ -26,6 +26,7 @@ class Solution:
 
 ### 22 合并两个有序链表
 
+```python
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         
@@ -42,7 +43,7 @@ class Solution:
             cur.next = l2
         
         return dum.next
-		
+```		
 		
 a,b  = b,c ----> a = b    b = c
 		
@@ -50,7 +51,7 @@ a,b  = b,c ----> a = b    b = c
 
 ### 26 树的子结构
 
-	
+```python
 class Solution:
     def isSubStructure(self, A: TreeNode, B: TreeNode) -> bool:
         def recur(A,B):
@@ -61,7 +62,7 @@ class Solution:
             return recur(A.left,B.left) and recur(A.right,B.right)
 
         return bool(A and B) and (recur(A,B) or  self.isSubStructure(A.left,B) or  self.isSubStructure(A.right,B))	
-	
+```	
 
 
 if not A 判空法
@@ -73,6 +74,7 @@ if not A 判空法
 
 ### 27  二叉树的镜像
 
+```python
 class Solution:
     def mirrorTree(self, root: TreeNode) -> TreeNode:
         if root == None:
@@ -83,10 +85,11 @@ class Solution:
         root.left,root.right = left,right
 
         return root
+```
 
 ### 28 对称的二叉树
 
-
+```python
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
         def recur(left,right):
@@ -100,6 +103,6 @@ class Solution:
             return True
 
         return recur(root.left,root.right)
-
+```
 		
 连续 not 判断
