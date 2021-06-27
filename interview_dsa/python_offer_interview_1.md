@@ -216,7 +216,7 @@ class Solution:
 
 ```python
 
-	class Solution:
+class Solution:
     def copyRandomList(self, head: 'Node') -> 'Node':
         if not head: return None
         
@@ -248,9 +248,9 @@ class Solution:
 	
 ```python
 
-	dict = {1: 1, 2: 'aa', 'D': 'ee', 'Ty': 45}
-	for key, value in dict.items():
-	    print(key, value)
+dict = {1: 1, 2: 'aa', 'D': 'ee', 'Ty': 45}
+for key, value in dict.items():
+    print(key, value)
 	    
 ```
 
