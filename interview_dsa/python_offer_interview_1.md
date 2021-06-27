@@ -250,7 +250,7 @@ class Solution:
 
 	dict = {1: 1, 2: 'aa', 'D': 'ee', 'Ty': 45}
 	for key, value in dict.items():
-		print(key, value)
-
+	    print(key, value)
+	    
 ```
 
