@@ -1,5 +1,3 @@
-
-
 #### 09. 用两个栈实现队列
 
 class CQueue:
@@ -635,3 +633,93 @@ for key, value in dict.items():
     print(key, value)
 	    
 ```
+
+
+####  30 包含min函数的栈
+
+class MinStack:
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.A = []
+        self.B = []
+
+    def push(self, x: int) -> None:
+        self.A.append(x)
+        if not self.B or self.B[-1] >= x:
+            self.B.append(x)
+
+    def pop(self) -> None:
+        tmp = self.A.pop()
+        if tmp == self.B[-1]:
+            self.B.pop()
+
+    def top(self) -> int:
+        
+        return self.A[-1]
+
+    def min(self) -> int:
+        return self.B[-1]
+
+
+双栈问题:  栈A正常存,  栈B存储非严格降序的元素
+
+####  41  数据流的中位数---双堆问题
+
+双堆问题: 大顶堆和小顶堆组合
+
+Python标准库模块之heapq
+ 
+ https://www.jianshu.com/p/801318c77ab5
+ 
+heapq有两种方式创建堆， 一种是使用一个空列表，然后使用heapq.heappush()函数把值加入堆中(弹出则是heapq.heappop())，另外一种就是使用heap.heapify(list)转换列表成为堆结构
+ 
+heapq默认的是小顶堆，如果需要实现大顶堆，则需要push -num
+
+
+```python
+
+ import heapq
+
+class MedianFinder:
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.A = []
+        self.B = []
+
+    def addNum(self, num: int) -> None:
+        if len(self.A) != len(self.B):
+            heapq.heappush(self.A,num)
+            heapq.heappush(self.B,-heapq.heappop(self.A))
+        else:
+            heapq.heappush(self.B,-num)
+            heapq.heappush(self.A,-heapq.heappop(self.B))
+
+    def findMedian(self) -> float:
+
+        if len(self.A)!=len(self.B):
+            return self.A[0]
+        else:
+            return (self.A[0]- self.B[0])/2
+``` 
+
+####  42  连续子数组的最大和
+
+动态规划的变形，思考前缀和数组法
+
+```python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        
+        for i in range(1,len(nums)):
+           nums[i] += max(nums[i-1],0)
+        
+        return max(nums)
+```
+ 
+
