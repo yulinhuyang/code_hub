@@ -1,5 +1,9 @@
 # digital_image_process
 
+https://github.com/LiuFG/digital_image_process
+
+https://sunocean.life/blog/blog/2020/09/27/dip-digital-image-processing3
+
 数字图像处理学习笔记, 根据以下学习指南进行:
 
 1. 学习用书： 数字图像处理 MATLAB 版 冈萨雷斯著
