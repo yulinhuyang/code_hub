@@ -3,7 +3,8 @@
 https://github.com/JushuangQiao/Python-Offer
 
 - [牛客网](https://www.nowcoder.com/ta/coding-interviews?from=cyc_github)
-- [Leetcode](https://leetcode-cn.com/problemset/lcof/)
+- 剑指offer2: https://leetcode-cn.com/problem-list/xb9nqhhg/
+- 剑指offer专项突破：https://leetcode-cn.com/problem-list/e8X3pBZi/
 
 ### offer I
 - Offer 03 数组中重复的数字
