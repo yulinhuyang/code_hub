@@ -1,10 +1,6 @@
+# 剑指 Offer 二版 + 专项突击版
 
-
-### 参考: https://github.com/JushuangQiao/Python-Offer
-
-
-# 剑指 Offer 题解
-
+https://github.com/JushuangQiao/Python-Offer
 
 - [牛客网](https://www.nowcoder.com/ta/coding-interviews?from=cyc_github)
 - [Leetcode](https://leetcode-cn.com/problemset/lcof/)
@@ -86,7 +82,7 @@
 - Offer 68_I 二叉搜索树的最近公共祖先(235 二叉搜索树的最近公共祖先)
 - Offer 68_II 二叉树的最近公共祖先(236 二叉树的最近公共祖先)
 
-### offer II
+### offer II  专项突击版
 - Offer II 1 整数除法(29 两数相除)
 - Offer II 2 二进制加法(67 二进制求和)
 - Offer II 3 前n 个数字二进制中1的个数(338 比特位计数)
